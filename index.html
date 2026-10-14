@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DiMe — AI for professionals who already know how to work</title>
+<meta name="description" content="DiMe helps experienced professionals understand AI and apply it to the work they already know. Take the AI Assessment.">
+<meta property="og:title" content="DiMe — Your experience. Augmented by AI.">
+<meta property="og:description" content="AI education for experienced professionals. Start with your work, not the technology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf7f2;--bg2:#f1ece3;--ink:#1b2430;--mute:#5a6472;--line:#ddd5c8;--acc:#1f5f5b;--acc-ink:#fff;--warm:#b5532f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14181f;--bg2:#1b212b;--ink:#eee9df;--mute:#a6afbb;--line:#2e3744;--acc:#6fc0b8;--acc-ink:#10201f;--warm:#e58b66}}
+:root[data-theme="dark"]{--bg:#14181f;--bg2:#1b212b;--ink:#eee9df;--mute:#a6afbb;--line:#2e3744;--acc:#6fc0b8;--acc-ink:#10201f;--warm:#e58b66}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.15;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2.2rem,7vw,4rem)}h2{font-size:clamp(1.7rem,4.5vw,2.5rem)}h3{font-size:1.2rem}
+p{margin:0 0 1em}a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--warm);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:72px 0;border-top:1px solid var(--line)}
+.alt{background:var(--bg2)}
+.eyebrow{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--warm);font-weight:600;margin-bottom:12px}
+.lead{font-size:1.2rem;color:var(--mute);max-width:640px}
+.btn{display:inline-block;min-height:48px;padding:12px 22px;border-radius:6px;font:600 1rem Inter,sans-serif;text-decoration:none;cursor:pointer;border:2px solid var(--acc);background:var(--acc);color:var(--acc-ink)}
+.btn.ghost{background:transparent;color:var(--acc)}
+.row{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px}
+.logo{font:600 1.5rem Fraunces,Georgia,serif;color:var(--ink);text-decoration:none}
+.nav ul{display:none;list-style:none;margin:0;padding:0;gap:20px;font-size:.95rem}
+.nav ul a{color:var(--ink);text-decoration:none}
+.nav .btn{min-height:40px;padding:8px 14px;font-size:.9rem}
+@media(min-width:900px){.nav ul{display:flex}}
+.hero{padding:80px 0 72px;border:0}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.grid{display:grid;gap:24px}
+@media(min-width:760px){.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:1fr 1fr}}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px;font-weight:600}
+.flow span{padding:8px 14px;border:1px solid var(--line);border-radius:99px;background:var(--bg)}
+.flow i{color:var(--warm);font-style:normal}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{min-height:44px;padding:8px 16px;border-radius:99px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:500 1rem Inter,sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.panel{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:24px}
+.ba{border-left:3px solid var(--line);padding-left:16px}
+.ba b{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
+.ba.hl{border-color:var(--acc)}.ba.ctl{border-color:var(--warm)}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:16px}
+@media(min-width:760px){.steps{grid-template-columns:repeat(5,1fr)}}
+.steps li{counter-increment:s;padding-top:12px;border-top:3px solid var(--acc)}
+.steps li::before{content:"0" counter(s);display:block;font:600 .85rem Inter;color:var(--warm)}
+.steps b{display:block;font:600 1.25rem Fraunces,Georgia,serif}.steps span{font-size:.95rem;color:var(--mute)}
+.book{aspect-ratio:3/4;max-width:260px;background:var(--acc);color:var(--acc-ink);border-radius:4px 10px 10px 4px;padding:28px 22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:8px 10px 0 var(--line)}
+.book b{font:600 2.2rem Fraunces,Georgia,serif}.book small{opacity:.85;font-size:.85rem}
+ol.cur{columns:1;padding-left:22px}@media(min-width:760px){ol.cur{columns:2;column-gap:40px}}ol.cur li{margin-bottom:6px;break-inside:avoid}
+.ph{border:1.5px dashed var(--line);border-radius:8px;padding:20px;color:var(--mute);font-size:.95rem}
+label{display:block;font-weight:600;margin:14px 0 6px;font-size:.95rem}
+input,select{width:100%;min-height:48px;padding:10px 12px;font:1rem Inter,sans-serif;color:var(--ink);background:var(--bg);border:1.5px solid var(--mute);border-radius:6px}
+.opt{display:flex;gap:10px;align-items:flex-start;min-height:48px;padding:10px 12px;margin:8px 0;border:1.5px solid var(--line);border-radius:6px;cursor:pointer;font-weight:400;background:var(--bg)}
+.opt input{width:auto;min-height:0;margin-top:5px}
+.bar{height:6px;background:var(--line);border-radius:9px;margin-bottom:20px}.bar div{height:100%;background:var(--acc);border-radius:9px;transition:width .3s}
+.note{font-size:.85rem;color:var(--mute)}
+.hidden{display:none}
+footer{padding:40px 0;border-top:1px solid var(--line);font-size:.9rem;color:var(--mute)}
+footer a{color:var(--mute);margin-right:16px}
+</style>
+<link rel="canonical" href="https://oti-droid.github.io/"><meta property="og:url" content="https://oti-droid.github.io/"><meta property="og:type" content="website"><meta name="theme-color" content="#1f5f5b"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="#top">DiMe</a>
+<nav aria-label="Primary"><ul>
+<li><a href="#difference">Learn AI</a></li><li><a href="#professions">Your Profession</a></li><li><a href="/guide/">Guide</a></li><li><a href="/course/">Course</a></li><li><a href="/resources/">Resources</a></li><li><a href="/about/">About</a></li></ul></nav>
+<a class="btn" href="#assessment" data-track="cta_assessment_nav">Take the AI Assessment</a>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+<p class="eyebrow">AI for professionals who already know how to work</p>
+<h1>You already know your work. <em>Learn how AI fits into it.</em></h1>
+<p class="lead">You don't need to become an AI expert. DiMe helps experienced professionals understand AI and use it in the work they already know — clearly, practically, and without the hype.</p>
+<div class="row"><a class="btn" href="#assessment" data-track="assessment_hero">Start Your AI Assessment</a><a class="btn ghost" href="#guide" data-track="guide_hero">Explore the Guide</a></div>
+<p class="note" style="margin-top:16px">Five minutes. No technical background needed.</p>
+</div></section>
+
+<section class="alt" id="problem"><div class="wrap">
+<p class="eyebrow">The gap</p>
+<h2>You know your profession. AI is the new skill.</h2>
+<p class="lead">You are not behind. The way AI is usually explained simply wasn't built for you.</p>
+<div class="grid g2" style="margin-top:28px">
+<div><h3>Too much noise</h3><p>Endless information, constant jargon, and a new tool every week.</p></div>
+<div><h3>Too little relevance</h3><p>Very little of it explains what AI means for a lawyer, a teacher, a finance lead or a clinic manager.</p></div></div>
+</div></section>
+
+<section id="difference"><div class="wrap">
+<p class="eyebrow">The DiMe difference</p>
+<h2>We start with your work. Not the technology.</h2>
+<p class="lead">Every DiMe lesson begins with what you actually do, then shows where AI helps — and where it shouldn't be trusted.</p>
+<div class="flow" aria-label="DiMe approach"><span>Your profession</span><i>→</i><span>Your tasks</span><i>→</i><span>AI opportunities</span><i>→</i><span>Practical workflows</span><i>→</i><span>Better work</span></div>
+</div></section>
+
+<section class="alt" id="professions"><div class="wrap">
+<p class="eyebrow">See it for your work</p>
+<h2>What do you do?</h2>
+<div class="chips" id="chips" role="group" aria-label="Choose your profession"></div>
+<div class="panel" id="pro-out" aria-live="polite"><p class="note" style="margin:0">Choose a profession to see example use cases.</p></div>
+</div></section>
+
+<section id="action"><div class="wrap">
+<p class="eyebrow">AI in action</p>
+<h2>AI prepares. You decide.</h2>
+<div class="grid g3" style="margin-top:24px">
+<div class="ba"><b>Before</b>90 minutes preparing a weekly report by hand.</div>
+<div class="ba hl"><b>With AI</b>AI organises the information, flags patterns and drafts the report.</div>
+<div class="ba ctl"><b>You stay in control</b>You verify. You judge. You decide.</div></div>
+<p class="note" style="margin-top:20px">AI assists. Professionals remain accountable.</p>
+</div></section>
+
+<section class="alt" id="method"><div class="wrap">
+<p class="eyebrow">The DiMe Method</p>
+<h2>Five steps from curiosity to confident practice.</h2>
+<ol class="steps">
+<li><b>Understand</b><span>What AI is and isn't.</span></li>
+<li><b>Identify</b><span>Tasks in your work worth improving.</span></li>
+<li><b>Apply</b><span>Try AI on a real task.</span></li>
+<li><b>Verify</b><span>Check facts, sources and risk.</span></li>
+<li><b>Integrate</b><span>Build it into how you work.</span></li></ol>
+</div></section>
+
+<section id="guide"><div class="wrap grid g2" style="align-items:center">
+<div class="book" role="img" aria-label="DiMe Guide book cover placeholder"><small>DiMe</small><b>The AI Guide for Experienced Professionals</b><small>Cover design coming soon</small></div>
+<div>
+<p class="eyebrow">The DiMe Guide · Understand</p>
+<h2>What is AI, what does it mean for my work, and how do I start?</h2>
+<p>A plain-English guide for professionals with deep experience and no wish to become technologists.</p>
+<ul><li>Understand what AI can and cannot reliably do</li><li>Spot the tasks in your own role that suit it</li><li>Check AI output before you rely on it</li></ul>
+<div class="row"><a class="btn" href="/guide/" data-track="book_cta">Get the Guide</a><a class="btn ghost" href="/guide/#contents" data-track="sample_chapter">See what's inside</a></div>
+<p class="note">Launch details and pricing coming soon.</p></div>
+</div></section>
+
+<section class="alt" id="course"><div class="wrap">
+<p class="eyebrow">The DiMe Course · Apply</p>
+<h2>A structured programme, not a pile of tutorials.</h2>
+<p class="lead">The Guide helps you understand. The Course helps you apply AI to real professional situations.</p>
+<ol class="cur"><li>AI Without the Hype</li><li>Working With AI</li><li>Prompting &amp; Instructions</li><li>Research &amp; Information</li><li>Writing &amp; Communication</li><li>Analysis &amp; Decision Support</li><li>AI Workflows</li><li>Automation &amp; Agents</li><li>Verification, Ethics &amp; Risk</li><li>Building Your Personal AI Workflow</li></ol>
+<div class="row"><a class="btn" href="/course/" data-track="course_cta">Explore the Course</a></div>
+<p class="note">Format, duration and pricing to be confirmed.</p>
+</div></section>
+
+<section id="assessment"><div class="wrap" style="max-width:720px">
+<p class="eyebrow">AI Assessment</p>
+<h2>Where are you with AI today?</h2>
+<p class="lead" style="margin-bottom:24px">Six short questions. It's a self-reported starting point, not a test, and your result appears before we ask for anything.</p>
+<div class="panel" id="quiz">
+<div class="bar" aria-hidden="true"><div id="prog" style="width:0"></div></div>
+<div id="qbody"></div>
+</div>
+</div></section>
+
+<section class="alt" id="trust"><div class="wrap">
+<p class="eyebrow">Trust</p>
+<h2>Honest about what we have, and what we don't yet.</h2>
+<div class="panel" style="margin-bottom:24px;max-width:720px">
+<h3>Meet the creator</h3>
+<p>I'm Otieno Koduong'o, the person behind DiMe.</p>
+<p>I started DiMe after teaching myself to prompt and work with AI, and realising how many capable people struggle to see how it applies to their own work. They don't lack ability. They lack explanations that begin with their work rather than with the technology.</p>
+<p>I don't come from a technology background. My working life has been in hands-on, manual jobs rather than one trade, so I learned AI from the start, without a technical foundation.</p>
+<p>I'm not an AI authority, and DiMe doesn't pretend otherwise. I'm a practitioner who tests: I try AI on real tasks, check what holds up, and say plainly what needs verifying. I'm currently building an AI intelligence brief generator that turns scattered information into material for commercial decisions. It's an ongoing project, and a constant test of where AI helps and where it needs checking.</p>
+<p>In my own testing, AI struggled to separate fact from non-fact and to put information in context. That is why verification is built into everything DiMe teaches.</p>
+<p class="note" style="margin:0">Contact: <a href="mailto:otikoduongo@gmail.com">otikoduongo@gmail.com</a>. Photo coming soon.</p></div>
+<div class="grid g3">
+<div class="ph"><b>Method &amp; sources</b><br>How the DiMe Method was developed, and the sources behind it. Coming soon.</div>
+<div class="ph"><b>Testimonials &amp; case studies</b><br>Coming soon — only real, permissioned ones.</div>
+<div class="ph"><b>Sample lessons</b><br>Coming soon.</div></div>
+<p style="margin-top:24px">Our limits, stated plainly: AI makes mistakes, invents facts, and can mishandle confidential data. DiMe teaches you to verify, protect privacy, and keep professional judgment where it belongs — with you.</p>
+</div></section>
+
+<section id="resources"><div class="wrap grid g2">
+<div>
+<p class="eyebrow">Free · The DiMe Playbook</p>
+<h2>25 Ways AI Can Help You Work Smarter</h2>
+<p>Practical examples by task, each with a note on what to verify. Choose your profession and we'll send the version written for your field.</p></div>
+<form class="panel" data-form="lead_magnet" novalidate>
+<label for="ln">Name</label><input id="ln" name="name" autocomplete="name" required>
+<label for="le">Email</label><input id="le" name="email" type="email" autocomplete="email" required>
+<label for="lp">Profession</label><select id="lp" name="profession"></select>
+<label class="opt"><input type="checkbox" name="consent" required><span>I agree to DiMe emailing me the Playbook and occasional updates. See the <a href="/legal/#privacy">Privacy Policy</a>. You can unsubscribe at any time.</span></label>
+<div class="row"><button class="btn" type="submit">Get the Free Playbook</button></div>
+<p class="note form-msg" role="status"></p>
+</form></div></section>
+
+<section class="alt" id="brief"><div class="wrap grid g2">
+<div><p class="eyebrow">DiMe Brief</p><h2>What matters in AI — and what doesn't.</h2><p>A short weekly explanation, written for people with real work to do.</p></div>
+<form class="panel" data-form="newsletter" novalidate>
+<label for="ne">Email</label><input id="ne" name="email" type="email" autocomplete="email" required>
+<label class="opt"><input type="checkbox" name="consent" required><span>I agree to receive the DiMe Brief by email. See the <a href="/legal/#privacy">Privacy Policy</a>. You can unsubscribe at any time.</span></label>
+<div class="row"><button class="btn" type="submit">Join the DiMe Brief</button></div>
+<p class="note form-msg" role="status"></p></form></div></section>
+
+<section><div class="wrap" style="text-align:center">
+<h2>You already know how to work. Now learn how AI can work with you.</h2>
+<div class="row" style="justify-content:center"><a class="btn" href="#assessment" data-track="assessment_final">Start Your AI Assessment</a></div>
+<p class="note" style="margin-top:20px">Organisation? <a href="mailto:otikoduongo@gmail.com">Book a DiMe Consultation</a></p>
+</div></section>
+</main>
+
+<footer><div class="wrap"><a href="#top">DiMe</a><a href="/legal/#privacy">Privacy</a><a href="/legal/#terms">Terms</a><a href="/about/">About</a><p style="margin-top:12px">Your experience. Augmented by AI.</p></div></footer>
+
+<script>
+var track=function(e,d){try{(window.dataLayer=window.dataLayer||[]).push(Object.assign({event:e},d||{}))}catch(x){}};
+var P={
+Management:["Weekly reporting and team updates","Drafting briefings from raw notes","Scenario comparison for decisions","Check figures and anything that names a person"],
+Finance:["Summarising long reports and filings","Drafting commentary on variances","Explaining models to non-specialists","Recalculate every number; never trust AI arithmetic"],
+Law:["First-pass document review and summaries","Plain-language client explanations","Structuring research questions","Verify every citation; fabricated cases exist"],
+Education:["Lesson and activity drafts","Differentiating materials for learners","Feedback comment banks","Check accuracy and fit to your curriculum"],
+Healthcare:["Drafting patient-information leaflets","Summarising administrative documents","Preparing training material","Never enter identifiable patient data; clinical judgment is yours"],
+HR:["Job descriptions and policy drafts","Structuring interview guides","Summarising survey feedback","Watch for bias; protect employee data"],
+Marketing:["Audience research and message variants","Content outlines and first drafts","Campaign summaries","Check claims, tone and brand fit"],
+Engineering:["Explaining unfamiliar standards or code","Drafting specifications and test plans","Comparing design options","Validate against standards and calculations"],
+Sales:["Account research before calls","Proposal and follow-up drafts","Call-note summaries","Confirm facts about the client"],
+Consulting:["Rapid desk research","Structuring analyses and slide storylines","Synthesising interview notes","Source-check all market data"],
+Government:["Plain-language summaries of policy","Drafting correspondence","Organising consultation responses","Observe data-handling rules and public accountability"],
+NGOs:["Grant-application first drafts","Impact-report summaries","Volunteer communications","Verify figures and donor-specific requirements"],
+Business:["Customer emails and quotes","Planning and process checklists","Summarising market information","Keep confidential data out of public tools"],
+Other:["Summarising long documents","Drafting routine communication","Organising research","Verify facts before relying on any output"]};
+var R={Law:1,Healthcare:1,Finance:1,Government:1};
+var PP="/ai-for-";
+var S={Management:"managers",Finance:"accountants",Law:"lawyers",Education:"teachers",Healthcare:"healthcare",HR:"hr",Marketing:"marketing",Engineering:"engineers",Sales:"sales",Consulting:"consulting",Government:"government",NGOs:"ngos",Business:"business",Other:"other"};
+var names=Object.keys(P),chips=document.getElementById("chips"),out=document.getElementById("pro-out");
+function showPro(n){var u=P[n];out.innerHTML='<h3>AI for '+n+'</h3><p><b>Where AI can help</b></p><ul><li>'+u[0]+'</li><li>'+u[1]+'</li><li>'+u[2]+'</li></ul><p><b>Verify</b>: '+u[3]+'.</p>'+(R[n]?'<p class="panel" style="border-color:var(--warm)"><b>Regulated field.</b> Confidentiality, data handling and professional duties come first. Check your employer and regulator rules before using any AI tool with client, patient or case information.</p>':'')+'<div class="row" style="margin-top:0"><a class="btn" href="'+PP+S[n]+'/" data-track="profession_page_'+S[n]+'">Read AI for '+n+'</a><a class="btn ghost" href="#resources">Get the Playbook for '+n+'</a></div><p class="note" style="margin-top:12px">Not sure where to start? <a href="#assessment">Take the assessment</a>.</p>';
+document.getElementById("lp").value=n;
+[].forEach.call(chips.children,function(c){c.setAttribute("aria-pressed",c.textContent===n)});track("profession_select",{profession:n});}
+names.forEach(function(n){var b=document.createElement("button");b.className="chip";b.type="button";b.textContent=n;b.setAttribute("aria-pressed","false");b.onclick=function(){showPro(n)};chips.appendChild(b)});
+var ops='<option value="">Select…</option>'+names.map(function(n){return'<option>'+n+'</option>'}).join("");
+document.getElementById("lp").innerHTML=ops;
+
+var Q=[
+{k:"pro",t:"What is your profession?",type:"select"},
+{k:"freq",t:"How often do you use AI at work today?",o:["Never","Tried it once or twice","A few times a month","Weekly or more"]},
+{k:"tools",t:"Which have you used? (choose any)",multi:1,o:["A chatbot (e.g. ChatGPT, Claude, Gemini)","AI inside work software","An AI research or meeting tool","None yet"]},
+{k:"need",t:"What would you most like AI to help with?",o:["Writing and communication","Research and information","Analysis and reporting","Saving time on routine tasks"]},
+{k:"worry",t:"What concerns you most?",o:["Accuracy and made-up facts","Confidentiality and privacy","Not knowing where to start","My role changing"]},
+{k:"verify",t:"How confident are you checking AI-generated information?",o:["Not at all","Somewhat","Fairly","Very"]}];
+var step=0,A={},qb=document.getElementById("qbody"),pg=document.getElementById("prog");
+function render(){
+if(step>=Q.length)return result();
+var q=Q[step];pg.style.width=(step/Q.length*100)+"%";
+var h='<fieldset style="border:0;padding:0;margin:0"><legend><h3>'+q.t+'</h3></legend>';
+if(q.type==="select")h+='<label class="note" for="qs">Profession</label><select id="qs">'+ops+'</select>';
+else q.o.forEach(function(o,i){h+='<label class="opt"><input type="'+(q.multi?"checkbox":"radio")+'" name="q" value="'+i+'"><span>'+o+'</span></label>'});
+h+='</fieldset><div class="row"><button class="btn" id="nx" type="button">'+(step===Q.length-1?"See my profile":"Continue")+'</button></div><p class="note" id="err" role="alert"></p>';
+qb.innerHTML=h;
+if(step===0)track("assessment_start");
+document.getElementById("nx").onclick=function(){
+if(q.type==="select"){var v=document.getElementById("qs").value;if(!v)return err();A.pro=v}
+else{var c=[].filter.call(qb.querySelectorAll("input"),function(i){return i.checked}).map(function(i){return+i.value});if(!c.length)return err();A[q.k]=q.multi?c:c[0]}
+step++;render()};
+}
+function err(){document.getElementById("err").textContent="Please choose an option to continue."}
+function result(){
+pg.style.width="100%";
+var tools=A.tools.indexOf(3)>-1?0:Math.min(A.tools.length,3);
+var s=A.freq+tools+A.verify,st,d,nxt,prod;
+if(s<=3){st="Starter";d="You're at the beginning, which is a strong place to start: you bring the professional judgment AI cannot supply.";nxt="Read the Guide to build a clear picture before choosing tools.";prod="The DiMe Guide"}
+else if(s<=6){st="Explorer";d="You understand what AI is, but haven't yet integrated it into your professional workflow.";nxt="Pick one recurring task and test AI on it, with a checking routine.";prod="The DiMe Guide, then the Course"}
+else if(s<=9){st="Practitioner";d="You use AI with some regularity. The next gain is consistency and reliable verification.";nxt="Turn your best experiments into repeatable workflows.";prod="The DiMe Course"}
+else{st="Integrator";d="AI is already part of your work. Your focus now is governance, quality and leading others.";nxt="Document your workflows and set team standards.";prod="Course advanced modules or an organisational programme"}
+var gap=["a habit of verifying output","a first practical use case","a routine for checking facts"][A.verify<2?0:A.freq<2?1:2];
+var worry=["Always check names, numbers and citations at source.","Keep confidential material out of public tools; learn what each tool does with your data.","Start with one small, low-risk task this week.","Your judgment, relationships and accountability are what AI cannot replace."][A.worry];
+qb.innerHTML='<p class="eyebrow">Your DiMe AI Profile</p><h3 style="font-size:1.8rem">AI Stage: '+st+'</h3><p>'+d+'</p><p><b>Strength:</b> '+A.pro+' experience gives you the judgment to evaluate AI output.</p><p><b>Gap to close:</b> '+gap+'.</p><p><b>On your concern:</b> '+worry+'</p><p><b>Next step:</b> '+nxt+'</p><p><b>Recommended:</b> '+prod+'</p><form data-form="assessment_result" novalidate><label for="re">Email me this profile and a starter plan</label><input id="re" name="email" type="email" autocomplete="email" required><label class="opt"><input type="checkbox" name="consent" required><span>I agree to DiMe emailing me this profile and occasional updates. See the <a href="/legal/#privacy">Privacy Policy</a>. You can unsubscribe at any time.</span></label><div class="row"><button class="btn" type="submit">Send my profile</button></div><p class="note form-msg" role="status"></p></form><p class="note">Your result is shown above regardless of whether you share your email.</p>';
+track("assessment_complete",{stage:st,profession:A.pro});bind();
+}
+function bind(){[].forEach.call(document.querySelectorAll("form[data-form]"),function(f){
+if(f.dataset.b)return;f.dataset.b=1;
+f.addEventListener("submit",function(e){e.preventDefault();var m=f.querySelector(".form-msg"),em=f.querySelector("[name=email]");
+if(!em.value||!em.checkValidity()){m.textContent="Please enter a valid email address.";em.focus();return}
+var cb=f.querySelector("[name=consent]");if(cb&&!cb.checked){m.textContent="Please tick the box to agree before continuing.";cb.focus();return}
+var pr=f.querySelector("[name=profession]");track(f.dataset.form+"_submit",pr?{profession:pr.value}:undefined);
+if(f.dataset.form==="lead_magnet"){m.innerHTML='Thank you. <a href="/playbook/"><b>Open your Playbook</b></a>. (Demo: connect this form to your email provider to send it by email too.)';track("playbook_delivered")}
+else{m.textContent="Thank you. (Demo: connect this form to your email provider before launch.)"}
+f.reset()})})}
+[].forEach.call(document.querySelectorAll("[data-track]"),function(a){a.addEventListener("click",function(){track(a.dataset.track)})});
+bind();render();
+</script>
+</body>
+</html>

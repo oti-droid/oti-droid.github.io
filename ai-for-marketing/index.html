@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI for Marketing Professionals — DiMe</title>
+<meta name="description" content="Practical ways marketing professionals can use AI, where it should not be trusted, and how to verify output.">
+<meta property="og:title" content="AI for Marketing Professionals — DiMe">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf7f2;--bg2:#f1ece3;--ink:#1b2430;--mute:#5a6472;--line:#ddd5c8;--acc:#1f5f5b;--acc-ink:#fff;--warm:#b5532f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14181f;--bg2:#1b212b;--ink:#eee9df;--mute:#a6afbb;--line:#2e3744;--acc:#6fc0b8;--acc-ink:#10201f;--warm:#e58b66}}
+:root[data-theme="dark"]{--bg:#14181f;--bg2:#1b212b;--ink:#eee9df;--mute:#a6afbb;--line:#2e3744;--acc:#6fc0b8;--acc-ink:#10201f;--warm:#e58b66}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.1rem,6.5vw,3.4rem)}h2{font-size:clamp(1.4rem,4vw,1.9rem);margin-top:0}
+p{margin:0 0 1em}a{color:var(--acc)}:focus-visible{outline:3px solid var(--warm);outline-offset:3px}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line)}.nav{display:flex;justify-content:space-between;align-items:center;min-height:60px;max-width:1040px;margin:0 auto;padding:0 20px}
+.logo{font:600 1.5rem Fraunces,Georgia,serif;color:var(--ink);text-decoration:none}
+.btn{display:inline-block;min-height:48px;padding:12px 22px;border-radius:6px;font:600 1rem Inter,sans-serif;text-decoration:none;border:2px solid var(--acc);background:var(--acc);color:var(--acc-ink)}
+.btn.ghost{background:transparent;color:var(--acc)}.nav .btn{min-height:40px;padding:8px 14px;font-size:.9rem}
+.eyebrow{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--warm);font-weight:600}
+.lead{font-size:1.2rem;color:var(--mute);max-width:640px}
+section{padding:40px 0;border-top:1px solid var(--line)}
+.g{display:grid;gap:20px}@media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
+.flow>div{padding:16px;border-left:3px solid var(--line)}.flow b{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
+.flow .a{border-color:var(--acc)}.flow .v{border-color:var(--warm)}
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:18px}
+.warn{border-color:var(--warm);background:var(--bg)}
+.prompt{background:var(--bg2);border-radius:6px;padding:14px 16px;font-size:.95rem;margin:0 0 12px;border-left:3px solid var(--acc)}
+ul{padding-left:20px;margin:0 0 1em}li{margin-bottom:6px}
+.others a{margin-right:14px;display:inline-block;min-height:32px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.note{font-size:.85rem;color:var(--mute)}
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:.9rem;color:var(--mute)}
+</style>
+<link rel="canonical" href="https://oti-droid.github.io/ai-for-marketing/"><meta property="og:url" content="https://oti-droid.github.io/ai-for-marketing/"><meta property="og:type" content="website"><meta name="theme-color" content="#1f5f5b"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+<header><div class="nav"><a class="logo" href="/">DiMe</a><a class="btn" href="/#assessment">Take the AI Assessment</a></div></header>
+<main class="wrap" id="app" style="padding-top:48px"><p class="eyebrow">AI for your profession</p><h1>AI for Marketing Professionals</h1><p class="lead">You understand audiences, brand and persuasion. AI can speed up drafting and exploration, but facts, claims and voice still need your judgment.</p><section><h2>What you do today</h2><ul><li>Researching audiences and competitors</li><li>Planning campaigns</li><li>Creating content</li><li>Reporting on results</li></ul></section><section class="g g2"><div><h2>Where AI can help</h2><ul><li>Generate message variants and angles to test</li><li>Draft outlines and first versions of content</li><li>Summarise campaign results you provide</li><li>Brainstorm ideas, then select with your own judgment</li></ul></div><div class="panel warn"><h2>Where not to trust it</h2><ul><li>Statistics, claims and competitor facts it states without a source</li><li>Final brand voice, which needs your editing</li><li>Claims in regulated categories without review</li><li>Content that may copy existing work</li></ul></div></section><section><h2>Example workflow</h2><div class="g g3 flow"><div><b>Task</b>Develop message variants for a campaign</div><div class="a"><b>AI application</b>AI generates variants from your brief and audience notes</div><div class="v"><b>Human verification</b>Remove unverified claims, match brand voice, check against rules and select what to test</div></div></section><section><h2>Example prompts</h2><p class="prompt">Here is the brief: [brief]. Write 5 message variants for [audience], each in a different tone. Do not include statistics or claims.</p><p class="prompt">Summarise the results below into 5 findings and 3 questions worth investigating: [data].</p><p class="prompt">Draft an outline for an article on [topic] for [audience], with the questions it should answer.</p><p class="note">Replace the bracketed parts. Never paste confidential information into a tool your organisation has not approved.</p></section><section class="g g2"><div><h2>Kinds of tools</h2><ul><li>A general-purpose AI assistant for drafting and ideation</li><li>AI features in your content and analytics tools</li><li>Brand-approved templates to keep voice consistent</li></ul><p class="note">We describe categories rather than endorse products. Tool recommendations will be added once reviewed.</p></div><div><h2>How to verify</h2><ul><li>Source every statistic and claim</li><li>Edit for brand voice and accuracy</li><li>Check advertising and regulatory rules</li><li>Check for originality before publishing</li></ul></div></section><section><h2>Keep learning</h2><ul><li>The DiMe Guide: understand what AI can and cannot do (coming soon)</li><li>The DiMe Course: apply it, including the Verification, Ethics &amp; Risk module (coming soon)</li></ul><div class="row"><a class="btn" href="/#assessment">See where you stand</a><a class="btn ghost" href="/#resources">Get the Playbook for Marketing professionals</a></div></section><section class="others"><p class="note">More profession pages:</p><a href="/ai-for-managers/">AI for Managers</a><a href="/ai-for-lawyers/">AI for Lawyers</a><a href="/ai-for-accountants/">AI for Accountants</a><a href="/ai-for-teachers/">AI for Teachers</a><a href="/ai-for-engineers/">AI for Engineers</a><a href="/ai-for-hr/">AI for HR professionals</a><a href="/ai-for-healthcare/">AI for Healthcare professionals</a><a href="/ai-for-sales/">AI for Sales professionals</a><a href="/ai-for-consulting/">AI for Consultants</a><a href="/ai-for-government/">AI for Government professionals</a><a href="/ai-for-ngos/">AI for NGO professionals</a><a href="/ai-for-business/">AI for Business owners</a><a href="/ai-for-other/">AI for Professionals</a></section></main>
+<footer><div class="wrap">AI assists. Professionals remain accountable.</div></footer>
+
+</body>
+</html>
