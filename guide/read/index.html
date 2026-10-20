@@ -7,21 +7,19 @@
 <meta name="description" content="A plain guide to using AI with the experience you already have. Nine short chapters for experienced professionals. Free to read online, with bookmarks.">
 <meta property="og:title" content="You Already Know How to Work: The DiMe Guide">
 <meta property="og:description" content="Nine short chapters on what AI is, what it can and cannot do, and how to use it with care.">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#faf7f2;--bg2:#f1ece3;--ink:#1b2430;--mute:#5a6472;--line:#ddd5c8;--acc:#1f5f5b;--acc-ink:#fff;--warm:#9c4423;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14181f;--bg2:#1b212b;--ink:#eee9df;--mute:#a6afbb;--line:#2e3744;--acc:#6fc0b8;--acc-ink:#10201f;--warm:#e58b66}}
-:root[data-theme="dark"]{--bg:#14181f;--bg2:#1b212b;--ink:#eee9df;--mute:#a6afbb;--line:#2e3744;--acc:#6fc0b8;--acc-ink:#10201f;--warm:#e58b66}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:19px/1.7 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.2;margin:0 0 .5em}
+h1,h2,h3{font-family:Inter,system-ui,sans-serif;font-weight:600;line-height:1.2;margin:0 0 .5em}
 h2{font-size:clamp(1.9rem,6vw,2.6rem);margin:.1em 0 .3em}h3{font-size:1.2rem;margin:1.5em 0 .4em}
 p,ul,ol{margin:0 0 1em}ul,ol{padding-left:24px}li{margin-bottom:.45em}
 a{color:var(--acc)}:focus-visible{outline:3px solid var(--warm);outline-offset:3px}
 button{font:inherit;cursor:pointer}
 .top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
 .bar{max-width:760px;margin:0 auto;padding:6px 14px;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.logo{font:600 1.3rem Fraunces,Georgia,serif;color:var(--ink);text-decoration:none}
+.logo{font:600 1.3rem Inter,system-ui,sans-serif;color:var(--ink);text-decoration:none}
 .tb{display:flex;gap:6px;flex-wrap:wrap}
 .tbtn{min-height:44px;padding:8px 12px;border-radius:6px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font-size:.9rem;font-weight:600}
 .prog{height:3px;background:var(--line)}.prog div{height:100%;width:0;background:var(--acc)}
@@ -29,8 +27,8 @@ main{max-width:680px;margin:0 auto;padding:28px 20px 110px}
 .page{display:block}.js .page{display:none}.js .page.on{display:block}.page:focus{outline:none}
 .rh{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mute);margin-bottom:22px;padding-bottom:8px;border-bottom:1px solid var(--line)}
 .chno{font-size:.85rem;text-transform:uppercase;letter-spacing:.14em;color:var(--warm);font-weight:600;margin:0 0 6px}
-.hook{font:italic 500 1.25rem/1.4 Fraunces,Georgia,serif;color:var(--mute);margin-bottom:1.4em}
-blockquote.key{margin:1.6em 0;padding:16px 20px;border-left:5px solid var(--acc);background:var(--bg2);border-radius:0 8px 8px 0;font:600 1.5rem/1.35 Fraunces,Georgia,serif}
+.hook{font:italic 500 1.25rem/1.4 Inter,system-ui,sans-serif;color:var(--mute);margin-bottom:1.4em}
+blockquote.key{margin:1.6em 0;padding:16px 20px;border-left:5px solid var(--acc);background:var(--bg2);border-radius:0 8px 8px 0;font:600 1.5rem/1.35 Inter,system-ui,sans-serif}
 blockquote.key span{display:block;font:600 .75rem Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--warm);margin-bottom:6px}
 .exercise{margin:2em 0 1em;padding:18px 22px;border:2px solid var(--acc);border-radius:10px}.exercise h3{margin-top:0;color:var(--acc)}.exercise h3::before{content:"\270E  "}
 .short{margin:2em 0 1em;padding:16px 22px;background:var(--bg2);border-radius:10px}.short h3{margin-top:0;font-size:1rem;text-transform:uppercase;letter-spacing:.1em;color:var(--warm)}.short li{margin-bottom:.3em}
@@ -43,24 +41,65 @@ sup.fn{font-size:.7em;line-height:0}sup.fn a{padding:0 2px;font-weight:600}
 .pn{font-weight:600;color:var(--mute)}
 .bm{min-height:44px;padding:8px 14px;border-radius:99px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font-size:.9rem;font-weight:600}
 .bm[aria-pressed="true"]{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
-.cover{background:#1f5f5b;color:#faf7f2;border-radius:10px;min-height:76vh;display:none;align-items:center;justify-content:center;text-align:center;padding:40px 24px}
+.cover{background:#152E40;color:#FFFFFF;border-radius:10px;min-height:76vh;display:none;align-items:center;justify-content:center;text-align:center;padding:40px 24px}
 .page.cover{display:flex}.js .page.cover{display:none}.js .page.cover.on{display:flex}
-.cover h1{font-size:clamp(2.4rem,9vw,3.8rem);margin:.2em 0 .3em;color:#faf7f2}
-.cover .series{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:#f2d9a8;margin:0}
+.cover h1{font-size:clamp(2.4rem,9vw,3.8rem);margin:.2em 0 .3em;color:#FFFFFF}
+.cover .series{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:#CEFF52;margin:0}
 .cover .mark{width:150px;margin:22px auto 8px;display:block}
-.cover .sub{font-size:1.15rem;color:#e8e2d6;max-width:420px;margin:0 auto 1.6em}
-.cover .by{font-weight:600;letter-spacing:.08em;margin:0}.cover .tag{font:italic 1.05rem Fraunces,Georgia,serif;color:#f2d9a8;margin:.4em 0 0}
+.cover .sub{font-size:1.15rem;color:#C5D0D7;max-width:420px;margin:0 auto 1.6em}
+.cover .by{font-weight:600;letter-spacing:.08em;margin:0}.cover .tag{font:italic 1.05rem Inter,system-ui,sans-serif;color:#CEFF52;margin:.4em 0 0}
 .cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px}
-.cta button{min-height:48px;padding:10px 22px;border-radius:6px;font-weight:600;border:2px solid #f2d9a8}.b1{background:#f2d9a8;color:#1f3f3c}.b2{background:transparent;color:#f2d9a8}
+.cta button{min-height:48px;padding:10px 22px;border-radius:6px;font-weight:600;border:2px solid #CEFF52}.b1{background:#CEFF52;color:#152E40}.b2{background:transparent;color:#CEFF52}
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--bg);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
 .nav .bar{justify-content:space-between;flex-wrap:nowrap}.nav .ind{font-weight:600;font-size:.95rem;text-align:center}
 .nav button:disabled{opacity:.4;cursor:default}
 .panel{position:fixed;inset:0;z-index:9;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center}.panel[hidden]{display:none}
 .sheet{background:var(--bg);width:100%;max-width:560px;max-height:75vh;overflow:auto;border-radius:14px 14px 0 0;padding:20px}
 .sheet h2{font-size:1.4rem;margin:0 0 .6em}.bl{list-style:none;padding:0}.bl li{display:flex;gap:8px;align-items:center;border-bottom:1px solid var(--line);padding:8px 0}.bl .go{flex:1;text-align:left;background:none;border:0;color:var(--ink);min-height:44px;font-weight:600}.bl .go small{display:block;font-weight:400;color:var(--mute)}
-@media print{.top,.nav,.panel,.pf .bm{display:none}.page,.js .page{display:block!important;page-break-after:always;color:#000}body{background:#fff;color:#000}.cover,.js .page.cover{display:flex!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media print{.top,.nav,.panel,.pf,.cta{display:none}.cover,.js .page.cover{color:#FFFFFF!important}.page,.js .page{display:block!important;page-break-after:always;color:#000}body{background:#fff;color:#000;font-size:10.5pt;line-height:1.5}.page h2{font-size:22pt}.page p,.page ul,.page ol{margin-bottom:.6em}.page li{margin-bottom:.25em}.pf{margin-top:1.2em}.viz{margin:.8em 0}.viz svg{max-width:290px}.exercise,.short{margin:1em 0;padding:10px 16px}blockquote.key{margin:1em 0;padding:10px 16px;font-size:15pt}.cover{min-height:225mm}.cover,.js .page.cover{display:flex!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* ===== DiMe design system v2 (reader) ===== */
+:root{--color-primary:#152E40;--color-accent:#CEFF52;--color-accent-hover:#B9EB3F;--color-accent-soft:#F4FFD8;--color-text-secondary:#52616B;--color-border:#D9E1E5;
+--bg:#FFFFFF;--bg2:#F5F7F8;--ink:#17232D;--mute:#52616B;--line:#D9E1E5;--acc:#152E40;--acc-ink:#FFFFFF;--warm:#152E40;--font-sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{font-family:var(--font-sans);background:#fff;color:var(--ink)}
+h1,h2,h3{font-family:var(--font-sans);color:var(--color-primary);font-weight:700;letter-spacing:-.02em}
+.top{background:var(--color-primary);border-bottom:0}.top .logo{color:#fff;font-weight:800;display:inline-flex;align-items:center;gap:10px}
+.top .logo::before{content:"";width:14px;height:14px;border-radius:4px;background:var(--color-accent)}
+.top .tbtn{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.7);border-radius:10px}.top .tbtn:hover{background:rgba(255,255,255,.12)}
+.prog{background:#203D50}.prog div{background:var(--color-accent)}
+.nav .tbtn{background:#fff;color:var(--color-primary);border:1px solid var(--color-primary);border-radius:10px}
+.nav #next{background:var(--color-accent);font-weight:700}.nav #next:hover{background:var(--color-accent-hover)}
+.nav button:disabled,.nav #next:disabled{background:#E7EBED;color:#7B858C;border-color:#E7EBED;font-weight:600;cursor:default}
+:focus-visible{outline:3px solid var(--color-primary)}.top :focus-visible,.cover :focus-visible{outline-color:var(--color-accent)}
+.chno{color:var(--color-text-secondary);display:flex;align-items:center;gap:10px}.chno::before{content:"";width:24px;height:4px;border-radius:2px;background:var(--color-accent)}
+blockquote.key{border-left:5px solid var(--color-primary);background:var(--color-accent-soft);border-radius:0 14px 14px 0}blockquote.key span{color:var(--color-primary)}
+.exercise{border:2px solid var(--color-primary);border-radius:14px}.exercise h3{color:var(--color-primary)}
+.short{background:var(--bg2);border-radius:14px}.short h3{color:var(--color-primary)}
+.bm{border:1px solid var(--color-primary);color:var(--color-primary);font-weight:600}.bm[aria-pressed="true"]{background:var(--color-accent);color:var(--color-primary);border-color:var(--color-primary)}
+.cover{border-radius:14px}.cover h1{font-weight:800;color:#fff}
+.sheet{border-radius:14px 14px 0 0}
+
+/* ===== DiMe glass system: approved tokens ===== */
+:root{
+--aurora-deep:#0F2230;--aurora-teal:#152E40;--aurora-lift:#1E4A63;--aurora-lime-glow:rgba(206,255,82,.30);
+--aurora-glow-shape:ellipse 620px 440px at 85% 10%;--glass-backdrop:radial-gradient(var(--aurora-glow-shape),var(--aurora-lime-glow),transparent 60%),radial-gradient(70% 80% at 5% 90%,rgba(30,74,99,.9),transparent 65%),linear-gradient(160deg,var(--aurora-teal),var(--aurora-deep));
+--glass-blur:14px;--glass-blur-strong:20px;--glass-blur-small:10px;--glass-saturate:130%;
+--glass-dark-bg:rgba(21,46,64,.72);--glass-dark-bg-bar:rgba(21,46,64,.82);--glass-dark-border:rgba(255,255,255,.24);--glass-dark-text:#FFFFFF;--glass-dark-text-2:#C5D0D7;
+--glass-light-bg:rgba(255,255,255,.88);--glass-light-border:rgba(255,255,255,.65);--glass-light-ring:rgba(21,46,64,.14);--glass-light-text:#17232D;--glass-light-text-2:#52616B;
+--glass-highlight:inset 0 1px 0 rgba(255,255,255,.30),inset 0 0 0 1px rgba(255,255,255,.06);
+--glass-shadow:0 8px 28px rgba(8,20,30,.30);--glass-radius:16px;--glass-transition:180ms ease;
+--glass-fallback-dark:#203D50;--glass-fallback-light:#FFFFFF}
+@media (max-width:640px){:root{--aurora-glow-shape:ellipse 280px 240px at 92% 0%;--glass-blur:10px;--glass-blur-strong:14px;--glass-shadow:0 4px 16px rgba(8,20,30,.28)}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){:root{--glass-dark-bg:var(--glass-fallback-dark);--glass-dark-bg-bar:#152E40;--glass-light-bg:var(--glass-fallback-light)}}
+@media (prefers-reduced-transparency:reduce),(prefers-contrast:more){:root{--glass-dark-bg:var(--glass-fallback-dark);--glass-dark-bg-bar:#152E40;--glass-light-bg:var(--glass-fallback-light);--glass-blur:0px;--glass-blur-strong:0px;--glass-saturate:100%}}
+
+/* reader: glass bars and sheet over scrolling content */
+.top{background:transparent;isolation:isolate}
+.top::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--glass-dark-bg-bar);-webkit-backdrop-filter:blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));backdrop-filter:blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));border-bottom:1px solid var(--glass-dark-border)}
+.nav{background:var(--glass-light-bg);-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));border-top:1px solid var(--glass-light-ring);box-shadow:0 -6px 20px rgba(8,20,30,.10)}
+.sheet{background:var(--glass-light-bg);-webkit-backdrop-filter:blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));backdrop-filter:blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));border:1px solid var(--glass-light-border);box-shadow:var(--glass-shadow)}
 </style>
-<link rel="canonical" href="https://oti-droid.github.io/guide/read/"><meta property="og:url" content="https://oti-droid.github.io/guide/read/"><meta property="og:type" content="website"><meta name="theme-color" content="#1f5f5b"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="canonical" href="https://oti-droid.github.io/guide/read/"><meta property="og:url" content="https://oti-droid.github.io/guide/read/"><meta property="og:type" content="website"><meta name="theme-color" content="#152E40"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
 <header class="top"><div class="bar"><a class="logo" href="/">DiMe</a>
@@ -68,7 +107,7 @@ sup.fn{font-size:.7em;line-height:0}sup.fn a{padding:0 2px;font-weight:600}
 <main id="book">
 <section class="page cover" id="pg1" data-page="1" data-title="Cover" aria-label="Cover">
 <div class="cv"><p class="series">The DiMe Guide</p>
-<svg class="mark" viewBox="0 0 200 120" aria-hidden="true"><circle cx="78" cy="60" r="44" fill="none" stroke="#f2d9a8" stroke-width="3"/><circle cx="122" cy="60" r="44" fill="none" stroke="#faf7f2" stroke-width="3"/><path d="M100 24a44 44 0 0 1 0 72a44 44 0 0 1 0-72z" fill="#f2d9a8" opacity=".35"/></svg>
+<svg class="mark" viewBox="0 0 200 120" aria-hidden="true"><circle cx="78" cy="60" r="44" fill="none" stroke="#CEFF52" stroke-width="3"/><circle cx="122" cy="60" r="44" fill="none" stroke="#FFFFFF" stroke-width="3"/><path d="M100 24a44 44 0 0 1 0 72a44 44 0 0 1 0-72z" fill="#CEFF52" opacity=".35"/></svg>
 <h1>You Already Know How to Work</h1>
 <p class="sub">A plain guide to using AI with the experience you already have</p>
 <p class="by">Otieno Koduong'o</p><p class="tag">Your experience. Augmented by AI.</p>

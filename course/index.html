@@ -6,19 +6,17 @@
 <title>The DiMe Course — apply AI to your professional work</title>
 <meta name="description" content="A structured programme that takes experienced professionals from understanding AI to applying it, with verification built in.">
 <meta property="og:title" content="The DiMe Course">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#faf7f2;--bg2:#f1ece3;--ink:#1b2430;--mute:#5a6472;--line:#ddd5c8;--acc:#1f5f5b;--acc-ink:#fff;--warm:#9c4423;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14181f;--bg2:#1b212b;--ink:#eee9df;--mute:#a6afbb;--line:#2e3744;--acc:#6fc0b8;--acc-ink:#10201f;--warm:#e58b66}}
-:root[data-theme="dark"]{--bg:#14181f;--bg2:#1b212b;--ink:#eee9df;--mute:#a6afbb;--line:#2e3744;--acc:#6fc0b8;--acc-ink:#10201f;--warm:#e58b66}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.15;margin:0 0 .5em}
+h1,h2,h3{font-family:Inter,system-ui,sans-serif;font-weight:600;line-height:1.15;margin:0 0 .5em}
 h1{font-size:clamp(2rem,6vw,3.2rem)}h2{font-size:clamp(1.5rem,4vw,2.1rem)}h3{font-size:1.1rem}
 p{margin:0 0 1em}a{color:var(--acc)}:focus-visible{outline:3px solid var(--warm);outline-offset:3px}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
 header{border-bottom:1px solid var(--line)}.nav{display:flex;justify-content:space-between;align-items:center;min-height:60px;max-width:1040px;margin:0 auto;padding:0 20px}
-.logo{font:600 1.5rem Fraunces,Georgia,serif;color:var(--ink);text-decoration:none}
+.logo{font:600 1.5rem Inter,system-ui,sans-serif;color:var(--ink);text-decoration:none}
 .btn{display:inline-block;min-height:48px;padding:12px 22px;border-radius:6px;font:600 1rem Inter,sans-serif;text-decoration:none;cursor:pointer;border:2px solid var(--acc);background:var(--acc);color:var(--acc-ink)}
 .btn.ghost{background:transparent;color:var(--acc)}.nav .btn{min-height:40px;padding:8px 14px;font-size:.9rem}
 .eyebrow{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--warm);font-weight:600}
@@ -27,8 +25,8 @@ section{padding:56px 0;border-top:1px solid var(--line)}.alt{background:var(--bg
 .g{display:grid;gap:24px}@media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
 .mods{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:0;counter-reset:m}
 .mods li{counter-increment:m;display:grid;grid-template-columns:44px 1fr;gap:8px;padding:16px 0;border-top:1px solid var(--line)}
-.mods li::before{content:counter(m,decimal-leading-zero);font:600 .9rem Inter;color:var(--warm);padding-top:4px}
-.mods b{font:600 1.15rem Fraunces,Georgia,serif;display:block}.mods span{color:var(--mute);font-size:.95rem}
+.mods li::before{content:counter(m,decimal-leading-zero);font:600 .9rem var(--font-sans);color:var(--warm);padding-top:4px}
+.mods b{font:600 1.15rem Inter,system-ui,sans-serif;display:block}.mods span{color:var(--mute);font-size:.95rem}
 .ph{border:1.5px dashed var(--line);border-radius:8px;padding:18px;color:var(--mute);font-size:.95rem}
 .panel{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:22px}
 .facts{display:grid;gap:14px}@media(min-width:760px){.facts{grid-template-columns:repeat(4,1fr)}}.facts b{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
@@ -39,16 +37,176 @@ details{border-bottom:1px solid var(--line);padding:14px 0}summary{cursor:pointe
 .note{font-size:.85rem;color:var(--mute)}.row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
 .flow{display:flex;flex-wrap:wrap;gap:8px;font-weight:600;margin-top:16px}.flow span{padding:8px 14px;border:1px solid var(--line);border-radius:99px;background:var(--bg)}
 footer{padding:32px 0;font-size:.9rem;color:var(--mute);border-top:1px solid var(--line)}
+
+/* ===== DiMe design system v2: Deep Teal gives the structure, Electric Lime gives the signal ===== */
+:root{
+--color-primary:#152E40;--color-accent:#CEFF52;
+--color-background:#FFFFFF;--color-background-secondary:#F5F7F8;--color-background-tertiary:#EAF0F2;
+--color-text-primary:#17232D;--color-text-secondary:#52616B;
+--color-text-on-dark:#FFFFFF;--color-text-on-dark-secondary:#C5D0D7;
+--color-border:#D9E1E5;--color-border-strong:#7B858C;
+--color-disabled-background:#E7EBED;--color-disabled-text:#7B858C;
+--color-accent-hover:#B9EB3F;--color-accent-active:#A8D636;--color-accent-soft:#F4FFD8;--color-surface-dark-raised:#203D50;
+--radius-button:10px;--radius-card:14px;--transition-fast:180ms ease;
+--font-sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+--bg:var(--color-background);--bg2:var(--color-background-secondary);--ink:var(--color-text-primary);--mute:var(--color-text-secondary);--line:var(--color-border);--acc:var(--color-primary);--acc-ink:#FFFFFF;--warm:var(--color-primary)}
+html{scroll-padding-top:84px}
+body{font-family:var(--font-sans);background:var(--color-background);color:var(--color-text-primary);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--font-sans);color:var(--color-primary);font-weight:700;letter-spacing:-.02em;line-height:1.15}
+h1{font-weight:800}h1,h2{text-wrap:balance}
+a{color:var(--color-primary);text-underline-offset:3px;transition:color var(--transition-fast)}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--color-primary);outline-offset:3px;border-radius:4px}
+.site-header :focus-visible,.hero-dark :focus-visible,.feature-dark :focus-visible,.site-footer :focus-visible{outline-color:var(--color-accent)}
+section{padding:72px 0}
+.alt{background:var(--color-background-secondary)}.tint{background:var(--color-background-tertiary)}
+.eyebrow{display:flex;align-items:center;gap:10px;font:700 .78rem var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--color-text-secondary)}
+.eyebrow::before{content:"";flex:none;width:24px;height:4px;border-radius:2px;background:var(--color-accent)}
+.lead{color:var(--color-text-secondary)}.note{color:var(--color-text-secondary)}
+/* header */
+.site-header{position:sticky;top:0;z-index:20;background:var(--color-primary);color:var(--color-text-on-dark);border-bottom:0;padding-top:env(safe-area-inset-top,0px)}
+.hd-in{max-width:1040px;margin:0 auto;padding:0 20px;min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:inline-flex;align-items:center;gap:10px;font:800 1.45rem var(--font-sans);letter-spacing:-.03em;color:#fff;text-decoration:none}
+.brand:hover{color:#fff}.brand .mark{width:14px;height:14px;border-radius:4px;background:var(--color-accent)}
+.menu-btn{display:none;min-height:44px;padding:8px 16px;border:1px solid rgba(255,255,255,.7);border-radius:var(--radius-button);background:transparent;color:#fff;font:600 .95rem var(--font-sans);cursor:pointer;transition:background var(--transition-fast)}
+.js .menu-btn{display:inline-block}.menu-btn:hover{background:rgba(255,255,255,.12)}
+.site-header nav{width:100%}.js .site-header nav{display:none}.js .site-header nav.open{display:block}
+.site-header nav ul{list-style:none;margin:6px 0;padding:0;display:flex;flex-direction:column}
+.site-header nav a:not(.btn){display:block;padding:13px 0 13px 12px;color:#fff;text-decoration:none;font-weight:500;border-bottom:1px solid rgba(255,255,255,.14);transition:color var(--transition-fast)}
+.site-header nav a:not(.btn):hover{color:var(--color-accent)}
+.site-header nav a[aria-current="page"]{box-shadow:inset 4px 0 0 var(--color-accent);font-weight:700}
+.site-header nav .btn{width:100%;margin:14px 0 18px}
+@media(min-width:960px){
+.js .menu-btn{display:none}.site-header nav,.js .site-header nav{display:flex;align-items:center;gap:24px;width:auto}
+.site-header nav ul{flex-direction:row;margin:0;gap:22px}
+.site-header nav a:not(.btn){padding:23px 0 19px;border:0;border-bottom:4px solid transparent;box-shadow:none}
+.site-header nav a[aria-current="page"]{box-shadow:none;border-bottom-color:var(--color-accent)}
+.site-header nav .btn{width:auto;margin:0;min-height:42px;padding:8px 16px}}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:var(--radius-button);font:700 1rem var(--font-sans);text-decoration:none;cursor:pointer;border:1px solid transparent;background:var(--color-accent);color:var(--color-primary);box-shadow:inset 0 0 0 1px rgba(21,46,64,.16);transition:background var(--transition-fast),transform var(--transition-fast),border-color var(--transition-fast)}
+.btn:hover{background:var(--color-accent-hover);color:var(--color-primary);transform:translateY(-1px)}
+.btn:active{background:var(--color-accent-active);transform:none}
+.btn.ghost{background:#fff;color:var(--color-primary);border:1px solid var(--color-primary);box-shadow:none}
+.btn.ghost:hover{background:var(--color-background-secondary);color:var(--color-primary)}
+.hero-dark .btn.ghost,.feature-dark .btn.ghost{background:transparent;color:#fff;border:1px solid #fff}
+.hero-dark .btn.ghost:hover,.feature-dark .btn.ghost:hover{background:rgba(255,255,255,.12);color:#fff}
+.btn.text{background:transparent;box-shadow:none;border:0;color:var(--color-primary);padding:8px 4px;min-height:44px;text-decoration:underline;text-underline-offset:4px}
+.hero-dark .btn.text,.feature-dark .btn.text,.site-footer .btn.text{color:var(--color-accent)}
+.btn:disabled,.btn[aria-disabled="true"]{background:var(--color-disabled-background);color:var(--color-disabled-text);box-shadow:none;border-color:transparent;cursor:not-allowed;transform:none}
+.btn.is-loading{position:relative;color:transparent;pointer-events:none}
+.btn.is-loading::after{content:"";position:absolute;width:18px;height:18px;border:3px solid var(--color-primary);border-right-color:transparent;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.btn.is-loading::after{animation:none}.btn:hover{transform:none}html{scroll-behavior:auto}*{transition:none!important}}
+/* hero and dark feature surfaces */
+.hero-dark{background:var(--color-primary);color:var(--color-text-on-dark-secondary);padding:72px 0 64px;border:0}
+.hero-dark h1{color:#fff;font-size:clamp(2.2rem,6.4vw,3.9rem);line-height:1.08;max-width:24ch}
+.hero-dark h1 em{font-style:normal;color:var(--color-accent)}
+.hero-dark .eyebrow,.feature-dark .eyebrow{color:var(--color-accent);margin-bottom:18px}
+.hero-dark .lead,.hero-dark p,.hero-dark .note{color:var(--color-text-on-dark-secondary)}
+.hero-dark .lead{font-size:1.2rem;max-width:640px}
+.feature-dark{background:var(--color-primary);color:var(--color-text-on-dark-secondary);border:0}
+.feature-dark h2,.feature-dark h3,.feature-dark b{color:#fff}
+.feature-dark .eyebrow{color:var(--color-accent)}
+.feature-dark .lead,.feature-dark .note,.feature-dark span{color:var(--color-text-on-dark-secondary)}
+.feature-dark .steps li{border-top:3px solid var(--color-accent)}
+.feature-dark .steps li::before{color:var(--color-accent)}
+/* cards */
+.panel,.card,.rc,.pcard{background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-card)}
+.ph{border:1.5px dashed var(--color-border);border-radius:var(--radius-card);color:var(--color-text-secondary)}
+.exercise,.short,.rules,.banner{border-radius:var(--radius-card)}
+.card.featured,.panel.featured{background:var(--color-primary);border-color:var(--color-primary);color:var(--color-text-on-dark-secondary)}
+.card.featured h3,.panel.featured h3{color:#fff}
+.pcard{display:flex;flex-direction:column;gap:6px;padding:22px;text-decoration:none;color:var(--color-text-secondary);transition:border-color var(--transition-fast),transform var(--transition-fast)}
+.pcard b{color:var(--color-primary);font-size:1.1rem}
+.pcard:hover{border-color:var(--color-primary);transform:translateY(-2px)}
+.pcard::after{content:"\2192";color:var(--color-primary);font-weight:700;margin-top:4px}
+.prof-grid{display:grid;gap:16px}@media(min-width:640px){.prof-grid{grid-template-columns:repeat(2,1fr)}}@media(min-width:960px){.prof-grid{grid-template-columns:repeat(3,1fr)}}
+.page-body{padding-top:48px;padding-bottom:24px}
+.page-body>section:first-child{border-top:0}
+/* components on the homepage and inner pages */
+.cascade span{border-radius:99px}.cascade li:last-child span{background:var(--color-accent);color:var(--color-primary);border-color:var(--color-primary)}
+.chip{border:1.5px solid var(--color-border-strong);color:var(--color-primary);font-weight:600;transition:background var(--transition-fast),border-color var(--transition-fast)}
+.chip:hover{border-color:var(--color-primary)}
+.chip[aria-pressed="true"]{background:var(--color-accent);color:var(--color-primary);border-color:var(--color-primary);box-shadow:inset 0 0 0 1px var(--color-primary)}
+.ba.hl{border-color:var(--color-primary)}.ba.ctl{border-color:var(--color-accent);border-left-width:6px}
+.steps b{font-family:var(--font-sans);font-weight:700}
+.bar{background:var(--color-background-tertiary)}.bar div{background:var(--color-accent);box-shadow:inset 0 0 0 1px rgba(21,46,64,.3)}
+.opt{border-color:var(--color-border-strong);transition:border-color var(--transition-fast),background var(--transition-fast)}
+.opt:hover{border-color:var(--color-primary)}.opt:has(input:checked){border-color:var(--color-primary);background:var(--color-accent-soft)}
+.book{background:#152E40;color:#fff;border-radius:6px 12px 12px 6px;box-shadow:10px 12px 0 var(--color-accent)}
+.book b{color:#fff}.book small{color:#fff}.book .se{color:var(--color-accent)}
+.rules{background:var(--color-accent-soft);border:1px solid #DDF39B}
+.banner{background:var(--color-background-tertiary);border:2px solid var(--color-primary)}
+.flow .v{border-color:var(--color-accent)}
+.mods li::before,.item .n,.toc .pg{color:var(--color-primary)}
+.prompt{background:var(--color-background-secondary);border-left:4px solid var(--color-primary);border-radius:0 10px 10px 0}
+/* forms */
+label{color:var(--color-primary);font-weight:600}
+input,select,textarea{font-family:var(--font-sans);border:1.5px solid var(--color-border-strong);border-radius:var(--radius-button);background:#fff;color:var(--color-text-primary);transition:border-color var(--transition-fast)}
+input::placeholder{color:var(--color-text-secondary)}
+input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var(--color-primary);outline:3px solid var(--color-primary);outline-offset:2px}
+input[type=checkbox],input[type=radio]{accent-color:var(--color-primary)}
+.on-dark input,.on-dark select{background:var(--color-surface-dark-raised);color:#fff;border-color:#8FA3B0}
+.on-dark input:focus-visible,.on-dark select:focus-visible{border-color:var(--color-accent);outline-color:var(--color-accent)}
+.on-dark input::placeholder{color:var(--color-text-on-dark-secondary)}
+details{border-bottom-color:var(--color-border)}summary{color:var(--color-primary)}
+/* footer */
+.site-footer{background:var(--color-primary);color:var(--color-text-on-dark-secondary);padding:56px 0 28px;border:0;font-size:.95rem}
+.ft-in{max-width:1040px;margin:0 auto;padding:0 20px;display:grid;gap:32px}
+@media(min-width:760px){.ft-in{grid-template-columns:1.6fr 1fr 1fr 1fr}}
+.site-footer p{margin:0 0 12px;color:var(--color-text-on-dark-secondary)}
+.ft-h{font:700 .78rem var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#fff!important;margin:0 0 12px!important}
+.site-footer ul{list-style:none;margin:0;padding:0}.site-footer li{margin-bottom:8px}
+.site-footer a:not(.btn){color:#fff;text-decoration:none;margin-right:0;border-bottom:1px solid transparent}
+.site-footer a:not(.btn):hover{color:var(--color-accent);border-bottom-color:var(--color-accent)}
+.site-footer .brand{margin-bottom:10px;border:0}
+.ft-note{max-width:1040px;margin:36px auto 0;padding:20px 20px 0;border-top:1px solid var(--color-surface-dark-raised);font-size:.85rem}
+.hero-dark .book{background:var(--color-surface-dark-raised);border:1px solid rgba(255,255,255,.3)}.hero-dark .g2 h1{font-size:clamp(2rem,4vw,2.9rem)}.hero-dark .row+.note{margin-top:16px}
+.panel.warn,.warn{border:2px solid var(--color-primary);background:#fff}.page-body section{padding:44px 0}
+
+/* ===== DiMe glass system: approved tokens ===== */
+:root{
+--aurora-deep:#0F2230;--aurora-teal:#152E40;--aurora-lift:#1E4A63;--aurora-lime-glow:rgba(206,255,82,.30);
+--aurora-glow-shape:ellipse 620px 440px at 85% 10%;--glass-backdrop:radial-gradient(var(--aurora-glow-shape),var(--aurora-lime-glow),transparent 60%),radial-gradient(70% 80% at 5% 90%,rgba(30,74,99,.9),transparent 65%),linear-gradient(160deg,var(--aurora-teal),var(--aurora-deep));
+--glass-blur:14px;--glass-blur-strong:20px;--glass-blur-small:10px;--glass-saturate:130%;
+--glass-dark-bg:rgba(21,46,64,.72);--glass-dark-bg-bar:rgba(21,46,64,.82);--glass-dark-border:rgba(255,255,255,.24);--glass-dark-text:#FFFFFF;--glass-dark-text-2:#C5D0D7;
+--glass-light-bg:rgba(255,255,255,.88);--glass-light-border:rgba(255,255,255,.65);--glass-light-ring:rgba(21,46,64,.14);--glass-light-text:#17232D;--glass-light-text-2:#52616B;
+--glass-highlight:inset 0 1px 0 rgba(255,255,255,.30),inset 0 0 0 1px rgba(255,255,255,.06);
+--glass-shadow:0 8px 28px rgba(8,20,30,.30);--glass-radius:16px;--glass-transition:180ms ease;
+--glass-fallback-dark:#203D50;--glass-fallback-light:#FFFFFF}
+@media (max-width:640px){:root{--aurora-glow-shape:ellipse 280px 240px at 92% 0%;--glass-blur:10px;--glass-blur-strong:14px;--glass-shadow:0 4px 16px rgba(8,20,30,.28)}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){:root{--glass-dark-bg:var(--glass-fallback-dark);--glass-dark-bg-bar:#152E40;--glass-light-bg:var(--glass-fallback-light)}}
+@media (prefers-reduced-transparency:reduce),(prefers-contrast:more){:root{--glass-dark-bg:var(--glass-fallback-dark);--glass-dark-bg-bar:#152E40;--glass-light-bg:var(--glass-fallback-light);--glass-blur:0px;--glass-blur-strong:0px;--glass-saturate:100%}}
+
+/* aurora backdrops sit behind the glass */
+.hero-dark,.feature-dark{background:var(--glass-backdrop)}
+.hero-dark{padding-top:136px}
+/* header: dark glass bar floating over the hero */
+.site-header{background:transparent;position:fixed;top:0;left:0;right:0;isolation:isolate}
+.site-header::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--glass-dark-bg-bar);-webkit-backdrop-filter:blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));backdrop-filter:blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));border-bottom:1px solid var(--glass-dark-border);box-shadow:var(--glass-highlight)}
+@media(max-width:959.98px){.js .site-header nav.open{position:absolute;left:0;right:0;top:100%;padding:4px 20px 14px;background:var(--glass-dark-bg-bar);-webkit-backdrop-filter:blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));backdrop-filter:blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));border-bottom:1px solid var(--glass-dark-border);box-shadow:var(--glass-shadow)}}
+/* glass surfaces */
+.hero-card,.feature-dark .steps,.glass-dark{background:var(--glass-dark-bg);-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));border:1px solid var(--glass-dark-border);box-shadow:var(--glass-highlight),var(--glass-shadow);border-radius:var(--glass-radius);color:var(--glass-dark-text)}
+.feature-dark .steps{padding:28px;gap:22px}
+.glass-light{background:var(--glass-light-bg);-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));border:1px solid var(--glass-light-border);box-shadow:var(--glass-highlight),0 0 0 1px var(--glass-light-ring),var(--glass-shadow);border-radius:var(--glass-radius);color:var(--glass-light-text)}
+.facts.glass-dark{padding:24px 28px;margin-top:16px}.facts.glass-dark b{color:var(--glass-dark-text-2)}.facts.glass-dark div{color:var(--glass-dark-text)}
+/* text colours restored inside light glass that sits on a dark band */
+.feature-dark .glass-light,.feature-dark .glass-light span,.feature-dark .glass-light p,.feature-dark .glass-light li{color:var(--glass-light-text)}
+.feature-dark .glass-light h2,.feature-dark .glass-light h3,.feature-dark .glass-light b,.feature-dark .glass-light label,.feature-dark .glass-light a{color:var(--color-primary)}
+.feature-dark .glass-light .note,.feature-dark .glass-light .eyebrow{color:var(--glass-light-text-2)}
+.feature-dark .glass-light :focus-visible{outline-color:var(--color-primary)}
+.glass-dark :focus-visible,.hero-card :focus-visible{outline-color:var(--color-accent)}
+@media print{.site-header,.site-footer{display:none}}
 </style>
-<link rel="canonical" href="https://oti-droid.github.io/course/"><meta property="og:url" content="https://oti-droid.github.io/course/"><meta property="og:type" content="website"><meta name="theme-color" content="#1f5f5b"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="canonical" href="https://oti-droid.github.io/course/"><meta property="og:url" content="https://oti-droid.github.io/course/"><meta property="og:type" content="website"><meta name="theme-color" content="#152E40"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
-<header><div class="nav"><a class="logo" href="/">DiMe</a><a class="btn" href="/#assessment">Take the AI Assessment</a></div></header>
+<script>document.documentElement.classList.add("js")</script><header class="site-header"><div class="hd-in"><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>DiMe</a><button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav">Menu</button><nav id="site-nav" aria-label="Primary"><ul><li><a href="/#difference">Learn AI</a></li><li><a href="/professions/">Professions</a></li><li><a href="/guide/">Guide</a></li><li><a href="/course/" aria-current="page">Course</a></li><li><a href="/resources/">Resources</a></li><li><a href="/about/">About</a></li></ul><a class="btn" href="/#assessment" data-track="cta_assessment_nav">Take the AI Assessment</a></nav></div></header>
 <main>
-<section style="border:0"><div class="wrap">
+<section class="hero-dark"><div class="wrap">
 <p class="eyebrow">The DiMe Course · Apply</p>
 <h1>Take AI from something you understand to something you use well.</h1>
-<p class="lead">A structured programme for experienced professionals: ten modules that move from the fundamentals to a personal AI workflow for your own role, with verification built into every step.</p>
+<p class="lead">A 10-day group course for experienced professionals. One topic a day, one real task from your own work, and feedback on what you hand in. By day 10 you have a personal AI workflow for your role, with checking built in at every step.</p>
 <div class="row"><a class="btn" href="#waitlist">Join the waitlist</a><a class="btn ghost" href="#modules">See the modules</a></div>
 </div></section>
 
@@ -65,8 +223,8 @@ footer{padding:32px 0;font-size:.9rem;color:var(--mute);border-top:1px solid var
 </div></section>
 
 <section class="alt" id="modules"><div class="wrap">
-<h2>Ten modules</h2>
-<p class="note">Draft curriculum. Content may change before launch.</p>
+<h2>Ten days, one module a day</h2>
+<p class="note">Details may change before the first cohort.</p>
 <ol class="mods">
 <li><div><b>AI Without the Hype</b><span>What AI is, what it isn't, and how to judge claims.</span></div></li>
 <li><div><b>Working With AI</b><span>How to treat AI as an assistant with strengths and blind spots.</span></div></li>
@@ -81,10 +239,35 @@ footer{padding:32px 0;font-size:.9rem;color:var(--mute);border-top:1px solid var
 </div></section>
 
 <section><div class="wrap">
+<h2>How the 10 days work</h2>
+<p class="lead">One topic a day. About 60 minutes. Real tasks from your own work.</p>
+<ol>
+<li><b>Read</b> a short explainer in plain language (10 to 15 minutes).</li>
+<li><b>Try</b> the day's templates on a real task (30 minutes).</li>
+<li><b>Hand in</b> one small assignment (15 minutes).</li>
+<li><b>Use the feedback</b> the next morning: one thing done well, one thing to fix, one next step.</li>
+</ol>
+<div class="g g2" style="margin-top:28px">
+<div><h3>What is included</h3>
+<ul>
+<li>A short, plain-language explainer each day</li>
+<li>28 ready-to-use templates: requests to copy, fill-in sheets and checklists</li>
+<li>A small assignment each day, with feedback</li>
+<li>Three simple notebooks to keep: a task log, a request library and a checking log</li>
+<li>A plain-word glossary and a one-page quick reference</li>
+<li>By day 10: your own one-page AI workflow and a 30-day plan</li>
+</ul></div>
+<div><h3>What is not included</h3>
+<p>There is no certificate. The course gives you a working method and your own evidence from your own work.</p></div></div>
+</div></section>
+
+<section class="feature-dark"><div class="wrap">
 <h2>Format and details</h2>
-<div class="facts">
-<div><b>Format</b>To be confirmed</div><div><b>Duration</b>To be confirmed</div><div><b>Price</b>To be announced</div><div><b>Start</b>To be announced</div></div>
-<div class="g g3" style="margin-top:32px">
+<div class="facts glass-dark">
+<div><b>Format</b>10-day group cohort</div><div><b>Duration</b>10 days, about 60 minutes a day</div><div><b>Price</b>One time pay USD 19.99 (Ksh 2,600)</div><div><b>Start</b>To be announced</div></div>
+</div></section>
+<section><div class="wrap">
+<div class="g g3">
 <div class="ph"><b>Lesson previews</b><br>Coming soon.</div>
 <div class="ph"><b>Learner feedback</b><br>Coming soon. Only real, permissioned comments will appear.</div>
 <div class="ph"><b>Instructor</b><br>Otieno Koduong'o, creator of DiMe, a practitioner who tests AI on real tasks. Fuller background coming soon.</div></div>
@@ -96,7 +279,9 @@ footer{padding:32px 0;font-size:.9rem;color:var(--mute);border-top:1px solid var
 <details><summary>Do I need technical skills?</summary><p>No. Nothing requires programming.</p></details>
 <details><summary>Is it relevant to my profession?</summary><p>Every module is built around professional tasks, and examples will be adapted by field. See the <a href="/professions/">profession pages</a>.</p></details>
 <details><summary>Will it teach specific tools?</summary><p>It teaches skills that outlast any one tool. Tool guidance will be kept current separately.</p></details>
-<details><summary>When does it start, and what does it cost?</summary><p>Not confirmed yet. The waitlist hears first.</p></details>
+<details><summary>What does it cost, and when does it start?</summary><p>The price is a one-time payment of USD 19.99 (Ksh 2,600). Start dates are to be announced. The waitlist hears first.</p></details>
+<details><summary>Is there a certificate?</summary><p>No. The course gives you a working method and your own evidence from your own work.</p></details>
+<details><summary>How much time does it take?</summary><p>About 60 minutes a day for 10 days.</p></details>
 </div></section>
 
 <section id="waitlist"><div class="wrap" style="max-width:560px">
@@ -110,12 +295,13 @@ footer{padding:32px 0;font-size:.9rem;color:var(--mute);border-top:1px solid var
 <p class="note">Not sure where to start? Take the <a href="/#assessment">free AI Assessment</a>, or read about <a href="/guide/">the Guide</a>.</p>
 </div></section>
 </main>
-<footer><div class="wrap">AI assists. Professionals remain accountable.</div></footer>
+<footer class="site-footer"><div class="ft-in"><div><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>DiMe</a><p>Your experience. Augmented by AI.</p><a class="btn" href="/#assessment">Take the AI Assessment</a></div><nav aria-label="Learn"><p class="ft-h">Learn</p><ul><li><a href="/guide/">The Guide</a></li><li><a href="/course/">The Course</a></li><li><a href="/resources/">Resources</a></li><li><a href="/playbook/">The Playbook</a></li></ul></nav><nav aria-label="DiMe"><p class="ft-h">DiMe</p><ul><li><a href="/about/">About</a></li><li><a href="/professions/">Professions</a></li><li><a href="mailto:otikoduongo@gmail.com">Contact</a></li></ul></nav><nav aria-label="Legal"><p class="ft-h">Legal</p><ul><li><a href="/legal/#privacy">Privacy</a></li><li><a href="/legal/#terms">Terms</a></li></ul></nav></div><p class="ft-note">AI assists. Professionals remain accountable.</p></footer>
 <script>
 var dl=window.dataLayer=window.dataLayer||[];
 document.getElementById("f").addEventListener("submit",function(e){e.preventDefault();var em=document.getElementById("e"),m=document.getElementById("m");
 if(!em.checkValidity()||!em.value){m.textContent="Please enter a valid email address.";em.focus();return}var cb=document.getElementById("c");if(!cb.checked){m.textContent="Please tick the box to agree before continuing.";cb.focus();return}
 dl.push({event:"course_waitlist_submit"});m.textContent="Thank you. (Demo: connect this form to your email provider before launch.)";this.reset()});
 </script>
+<script>(function(){var b=document.querySelector(".menu-btn"),n=document.getElementById("site-nav");if(!b||!n)return;b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o?"true":"false");b.textContent=o?"Close":"Menu"});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");b.setAttribute("aria-expanded","false");b.textContent="Menu";b.focus()}})})();</script>
 </body>
 </html>
