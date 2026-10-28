@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Case study: building DiMe with the bare minimum</title>
+<meta name="description" content="How a one-person project became a fast, accessible, 23-page AI education website, built from a phone and measured instead of assumed.">
+<meta property="og:title" content="Case study: building DiMe with the bare minimum">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:Inter,system-ui,sans-serif;font-weight:600;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.2rem,7vw,3.6rem)}h2{font-size:clamp(1.5rem,4vw,2rem);margin-top:1.6em}
+p{margin:0 0 1em}a{color:var(--acc)}:focus-visible{outline:3px solid var(--warm);outline-offset:3px}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line)}.nav{display:flex;justify-content:space-between;align-items:center;min-height:60px;max-width:1040px;margin:0 auto;padding:0 20px}
+.logo{font:600 1.5rem Inter,system-ui,sans-serif;color:var(--ink);text-decoration:none}
+.btn{display:inline-block;min-height:48px;padding:12px 22px;border-radius:6px;font:600 1rem Inter,sans-serif;text-decoration:none;border:2px solid var(--acc);background:var(--acc);color:var(--acc-ink)}
+.btn.ghost{background:transparent;color:var(--acc)}.nav .btn{min-height:40px;padding:8px 14px;font-size:.9rem}
+.eyebrow{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--warm);font-weight:600}
+.lead{font-size:1.25rem;color:var(--mute)}
+.pull{border-left:3px solid var(--acc);padding-left:18px;font:500 1.35rem/1.4 Inter,system-ui,sans-serif;margin:1.4em 0}
+.steps{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0}.steps li{padding:8px 14px;border:1px solid var(--line);border-radius:99px;background:var(--bg2);font-weight:600}
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:22px;margin:2em 0}
+.note{font-size:.85rem;color:var(--mute)}
+.row{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 48px}
+footer{border-top:1px solid var(--line);padding:32px 0;font-size:.9rem;color:var(--mute)}
+
+/* ===== DiMe design system v2: Deep Teal gives the structure, Electric Lime gives the signal ===== */
+:root{
+--color-primary:#152E40;--color-accent:#CEFF52;
+--color-background:#FFFFFF;--color-background-secondary:#F5F7F8;--color-background-tertiary:#EAF0F2;
+--color-text-primary:#17232D;--color-text-secondary:#52616B;
+--color-text-on-dark:#FFFFFF;--color-text-on-dark-secondary:#C5D0D7;
+--color-border:#D9E1E5;--color-border-strong:#7B858C;
+--color-disabled-background:#E7EBED;--color-disabled-text:#7B858C;
+--color-accent-hover:#B9EB3F;--color-accent-active:#A8D636;--color-accent-soft:#F4FFD8;--color-surface-dark-raised:#203D50;
+--radius-button:10px;--radius-card:14px;--transition-fast:180ms ease;
+--font-sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+--bg:var(--color-background);--bg2:var(--color-background-secondary);--ink:var(--color-text-primary);--mute:var(--color-text-secondary);--line:var(--color-border);--acc:var(--color-primary);--acc-ink:#FFFFFF;--warm:var(--color-primary)}
+html{scroll-padding-top:84px}
+body{font-family:var(--font-sans);background:var(--color-background);color:var(--color-text-primary);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--font-sans);color:var(--color-primary);font-weight:700;letter-spacing:-.02em;line-height:1.15}
+h1{font-weight:800}h1,h2{text-wrap:balance}
+a{color:var(--color-primary);text-underline-offset:3px;transition:color var(--transition-fast)}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--color-primary);outline-offset:3px;border-radius:4px}
+.site-header :focus-visible,.hero-dark :focus-visible,.feature-dark :focus-visible,.site-footer :focus-visible{outline-color:var(--color-accent)}
+section{padding:72px 0}
+.alt{background:var(--color-background-secondary)}.tint{background:var(--color-background-tertiary)}
+.eyebrow{display:flex;align-items:center;gap:10px;font:700 .78rem var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--color-text-secondary)}
+.eyebrow::before{content:"";flex:none;width:24px;height:4px;border-radius:2px;background:var(--color-accent)}
+.lead{color:var(--color-text-secondary)}.note{color:var(--color-text-secondary)}
+/* header */
+.site-header{position:sticky;top:0;z-index:20;background:var(--color-primary);color:var(--color-text-on-dark);border-bottom:0;padding-top:env(safe-area-inset-top,0px)}
+.hd-in{max-width:1040px;margin:0 auto;padding:0 20px;min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:inline-flex;align-items:center;gap:10px;font:800 1.45rem var(--font-sans);letter-spacing:-.03em;color:#fff;text-decoration:none}
+.brand:hover{color:#fff}.brand .mark{width:14px;height:14px;border-radius:4px;background:var(--color-accent)}
+.menu-btn{display:none;min-height:44px;padding:8px 16px;border:1px solid rgba(255,255,255,.7);border-radius:var(--radius-button);background:transparent;color:#fff;font:600 .95rem var(--font-sans);cursor:pointer;transition:background var(--transition-fast)}
+.js .menu-btn{display:inline-block}.menu-btn:hover{background:rgba(255,255,255,.12)}
+.site-header nav{width:100%}.js .site-header nav{display:none}.js .site-header nav.open{display:block}
+.site-header nav ul{list-style:none;margin:6px 0;padding:0;display:flex;flex-direction:column}
+.site-header nav a:not(.btn){display:block;padding:13px 0 13px 12px;color:#fff;text-decoration:none;font-weight:500;border-bottom:1px solid rgba(255,255,255,.14);transition:color var(--transition-fast)}
+.site-header nav a:not(.btn):hover{color:var(--color-accent)}
+.site-header nav a[aria-current="page"]{box-shadow:inset 4px 0 0 var(--color-accent);font-weight:700}
+.site-header nav .btn{width:100%;margin:14px 0 18px}
+@media(min-width:960px){
+.js .menu-btn{display:none}.site-header nav,.js .site-header nav{display:flex;align-items:center;gap:24px;width:auto}
+.site-header nav ul{flex-direction:row;margin:0;gap:22px}
+.site-header nav a:not(.btn){padding:23px 0 19px;border:0;border-bottom:4px solid transparent;box-shadow:none}
+.site-header nav a[aria-current="page"]{box-shadow:none;border-bottom-color:var(--color-accent)}
+.site-header nav .btn{width:auto;margin:0;min-height:42px;padding:8px 16px}}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:var(--radius-button);font:700 1rem var(--font-sans);text-decoration:none;cursor:pointer;border:1px solid transparent;background:var(--color-accent);color:var(--color-primary);box-shadow:inset 0 0 0 1px rgba(21,46,64,.16);transition:background var(--transition-fast),transform var(--transition-fast),border-color var(--transition-fast)}
+.btn:hover{background:var(--color-accent-hover);color:var(--color-primary);transform:translateY(-1px)}
+.btn:active{background:var(--color-accent-active);transform:none}
+.btn.ghost{background:#fff;color:var(--color-primary);border:1px solid var(--color-primary);box-shadow:none}
+.btn.ghost:hover{background:var(--color-background-secondary);color:var(--color-primary)}
+.hero-dark .btn.ghost,.feature-dark .btn.ghost{background:transparent;color:#fff;border:1px solid #fff}
+.hero-dark .btn.ghost:hover,.feature-dark .btn.ghost:hover{background:rgba(255,255,255,.12);color:#fff}
+.btn.text{background:transparent;box-shadow:none;border:0;color:var(--color-primary);padding:8px 4px;min-height:44px;text-decoration:underline;text-underline-offset:4px}
+.hero-dark .btn.text,.feature-dark .btn.text,.site-footer .btn.text{color:var(--color-accent)}
+.btn:disabled,.btn[aria-disabled="true"]{background:var(--color-disabled-background);color:var(--color-disabled-text);box-shadow:none;border-color:transparent;cursor:not-allowed;transform:none}
+.btn.is-loading{position:relative;color:transparent;pointer-events:none}
+.btn.is-loading::after{content:"";position:absolute;width:18px;height:18px;border:3px solid var(--color-primary);border-right-color:transparent;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.btn.is-loading::after{animation:none}.btn:hover{transform:none}html{scroll-behavior:auto}*{transition:none!important}}
+/* hero and dark feature surfaces */
+.hero-dark{background:var(--color-primary);color:var(--color-text-on-dark-secondary);padding:72px 0 64px;border:0}
+.hero-dark h1{color:#fff;font-size:clamp(2.2rem,6.4vw,3.9rem);line-height:1.08;max-width:24ch}
+.hero-dark h1 em{font-style:normal;color:var(--color-accent)}
+.hero-dark .eyebrow,.feature-dark .eyebrow{color:var(--color-accent);margin-bottom:18px}
+.hero-dark .lead,.hero-dark p,.hero-dark .note{color:var(--color-text-on-dark-secondary)}
+.hero-dark .lead{font-size:1.2rem;max-width:640px}
+.feature-dark{background:var(--color-primary);color:var(--color-text-on-dark-secondary);border:0}
+.feature-dark h2,.feature-dark h3,.feature-dark b{color:#fff}
+.feature-dark .eyebrow{color:var(--color-accent)}
+.feature-dark .lead,.feature-dark .note,.feature-dark span{color:var(--color-text-on-dark-secondary)}
+.feature-dark .steps li{border-top:3px solid var(--color-accent)}
+.feature-dark .steps li::before{color:var(--color-accent)}
+/* cards */
+.panel,.card,.rc,.pcard{background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-card)}
+.ph{border:1.5px dashed var(--color-border);border-radius:var(--radius-card);color:var(--color-text-secondary)}
+.exercise,.short,.rules,.banner{border-radius:var(--radius-card)}
+.card.featured,.panel.featured{background:var(--color-primary);border-color:var(--color-primary);color:var(--color-text-on-dark-secondary)}
+.card.featured h3,.panel.featured h3{color:#fff}
+.pcard{display:flex;flex-direction:column;gap:6px;padding:22px;text-decoration:none;color:var(--color-text-secondary);transition:border-color var(--transition-fast),transform var(--transition-fast)}
+.pcard b{color:var(--color-primary);font-size:1.1rem}
+.pcard:hover{border-color:var(--color-primary);transform:translateY(-2px)}
+.pcard::after{content:"\2192";color:var(--color-primary);font-weight:700;margin-top:4px}
+.prof-grid{display:grid;gap:16px}@media(min-width:640px){.prof-grid{grid-template-columns:repeat(2,1fr)}}@media(min-width:960px){.prof-grid{grid-template-columns:repeat(3,1fr)}}
+.page-body{padding-top:48px;padding-bottom:24px}
+.page-body>section:first-child{border-top:0}
+/* components on the homepage and inner pages */
+.cascade span{border-radius:99px}.cascade li:last-child span{background:var(--color-accent);color:var(--color-primary);border-color:var(--color-primary)}
+.chip{border:1.5px solid var(--color-border-strong);color:var(--color-primary);font-weight:600;transition:background var(--transition-fast),border-color var(--transition-fast)}
+.chip:hover{border-color:var(--color-primary)}
+.chip[aria-pressed="true"]{background:var(--color-accent);color:var(--color-primary);border-color:var(--color-primary);box-shadow:inset 0 0 0 1px var(--color-primary)}
+.ba.hl{border-color:var(--color-primary)}.ba.ctl{border-color:var(--color-accent);border-left-width:6px}
+.steps b{font-family:var(--font-sans);font-weight:700}
+.bar{background:var(--color-background-tertiary)}.bar div{background:var(--color-accent);box-shadow:inset 0 0 0 1px rgba(21,46,64,.3)}
+.opt{border-color:var(--color-border-strong);transition:border-color var(--transition-fast),background var(--transition-fast)}
+.opt:hover{border-color:var(--color-primary)}.opt:has(input:checked){border-color:var(--color-primary);background:var(--color-accent-soft)}
+.book{background:#152E40;color:#fff;border-radius:6px 12px 12px 6px;box-shadow:10px 12px 0 var(--color-accent)}
+.book b{color:#fff}.book small{color:#fff}.book .se{color:var(--color-accent)}
+.rules{background:var(--color-accent-soft);border:1px solid #DDF39B}
+.banner{background:var(--color-background-tertiary);border:2px solid var(--color-primary)}
+.flow .v{border-color:var(--color-accent)}
+.mods li::before,.item .n,.toc .pg{color:var(--color-primary)}
+.prompt{background:var(--color-background-secondary);border-left:4px solid var(--color-primary);border-radius:0 10px 10px 0}
+/* forms */
+label{color:var(--color-primary);font-weight:600}
+input,select,textarea{font-family:var(--font-sans);border:1.5px solid var(--color-border-strong);border-radius:var(--radius-button);background:#fff;color:var(--color-text-primary);transition:border-color var(--transition-fast)}
+input::placeholder{color:var(--color-text-secondary)}
+input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var(--color-primary);outline:3px solid var(--color-primary);outline-offset:2px}
+input[type=checkbox],input[type=radio]{accent-color:var(--color-primary)}
+.on-dark input,.on-dark select{background:var(--color-surface-dark-raised);color:#fff;border-color:#8FA3B0}
+.on-dark input:focus-visible,.on-dark select:focus-visible{border-color:var(--color-accent);outline-color:var(--color-accent)}
+.on-dark input::placeholder{color:var(--color-text-on-dark-secondary)}
+details{border-bottom-color:var(--color-border)}summary{color:var(--color-primary)}
+/* footer */
+.site-footer{background:var(--color-primary);color:var(--color-text-on-dark-secondary);padding:56px 0 28px;border:0;font-size:.95rem}
+.ft-in{max-width:1040px;margin:0 auto;padding:0 20px;display:grid;gap:32px}
+@media(min-width:760px){.ft-in{grid-template-columns:1.6fr 1fr 1fr 1fr}}
+.site-footer p{margin:0 0 12px;color:var(--color-text-on-dark-secondary)}
+.ft-h{font:700 .78rem var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#fff!important;margin:0 0 12px!important}
+.site-footer ul{list-style:none;margin:0;padding:0}.site-footer li{margin-bottom:8px}
+.site-footer a:not(.btn){color:#fff;text-decoration:none;margin-right:0;border-bottom:1px solid transparent}
+.site-footer a:not(.btn):hover{color:var(--color-accent);border-bottom-color:var(--color-accent)}
+.site-footer .brand{margin-bottom:10px;border:0}
+.ft-note{max-width:1040px;margin:36px auto 0;padding:20px 20px 0;border-top:1px solid var(--color-surface-dark-raised);font-size:.85rem}
+.hero-dark .book{background:var(--color-surface-dark-raised);border:1px solid rgba(255,255,255,.3)}.hero-dark .g2 h1{font-size:clamp(2rem,4vw,2.9rem)}.hero-dark .row+.note{margin-top:16px}
+.panel.warn,.warn{border:2px solid var(--color-primary);background:#fff}.page-body section{padding:44px 0}
+
+/* ===== DiMe glass system: approved tokens ===== */
+:root{
+--aurora-deep:#0F2230;--aurora-teal:#152E40;--aurora-lift:#1E4A63;--aurora-lime-glow:rgba(206,255,82,.30);
+--aurora-glow-shape:ellipse 620px 440px at 85% 10%;--glass-backdrop:radial-gradient(var(--aurora-glow-shape),var(--aurora-lime-glow),transparent 60%),radial-gradient(70% 80% at 5% 90%,rgba(30,74,99,.9),transparent 65%),linear-gradient(160deg,var(--aurora-teal),var(--aurora-deep));
+--glass-blur:14px;--glass-blur-strong:20px;--glass-blur-small:10px;--glass-saturate:130%;
+--glass-dark-bg:rgba(21,46,64,.72);--glass-dark-bg-bar:rgba(21,46,64,.82);--glass-dark-border:rgba(255,255,255,.24);--glass-dark-text:#FFFFFF;--glass-dark-text-2:#C5D0D7;
+--glass-light-bg:rgba(255,255,255,.88);--glass-light-border:rgba(255,255,255,.65);--glass-light-ring:rgba(21,46,64,.14);--glass-light-text:#17232D;--glass-light-text-2:#52616B;
+--glass-highlight:inset 0 1px 0 rgba(255,255,255,.30),inset 0 0 0 1px rgba(255,255,255,.06);
+--glass-shadow:0 8px 28px rgba(8,20,30,.30);--glass-radius:16px;--glass-transition:180ms ease;
+--glass-fallback-dark:#203D50;--glass-fallback-light:#FFFFFF}
+@media (max-width:640px){:root{--aurora-glow-shape:ellipse 280px 240px at 92% 0%;--glass-blur:10px;--glass-blur-strong:14px;--glass-shadow:0 4px 16px rgba(8,20,30,.28)}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){:root{--glass-dark-bg:var(--glass-fallback-dark);--glass-dark-bg-bar:#152E40;--glass-light-bg:var(--glass-fallback-light)}}
+@media (prefers-reduced-transparency:reduce),(prefers-contrast:more){:root{--glass-dark-bg:var(--glass-fallback-dark);--glass-dark-bg-bar:#152E40;--glass-light-bg:var(--glass-fallback-light);--glass-blur:0px;--glass-blur-strong:0px;--glass-saturate:100%}}
+
+/* aurora backdrops sit behind the glass */
+.hero-dark,.feature-dark{background:var(--glass-backdrop)}
+.hero-dark{padding-top:136px}
+/* header: dark glass bar floating over the hero */
+.site-header{background:transparent;position:fixed;top:0;left:0;right:0;isolation:isolate}
+.site-header::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--glass-dark-bg-bar);-webkit-backdrop-filter:blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));backdrop-filter:blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));border-bottom:1px solid var(--glass-dark-border);box-shadow:var(--glass-highlight)}
+@media(max-width:959.98px){.js .site-header nav.open{position:absolute;left:0;right:0;top:100%;padding:4px 20px 14px;background:var(--glass-dark-bg-bar);-webkit-backdrop-filter:blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));backdrop-filter:blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));border-bottom:1px solid var(--glass-dark-border);box-shadow:var(--glass-shadow)}}
+/* glass surfaces */
+.hero-card,.feature-dark .steps,.glass-dark{background:var(--glass-dark-bg);-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));border:1px solid var(--glass-dark-border);box-shadow:var(--glass-highlight),var(--glass-shadow);border-radius:var(--glass-radius);color:var(--glass-dark-text)}
+.feature-dark .steps{padding:28px;gap:22px}
+.glass-light{background:var(--glass-light-bg);-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturate));border:1px solid var(--glass-light-border);box-shadow:var(--glass-highlight),0 0 0 1px var(--glass-light-ring),var(--glass-shadow);border-radius:var(--glass-radius);color:var(--glass-light-text)}
+.facts.glass-dark{padding:24px 28px;margin-top:16px}.facts.glass-dark b{color:var(--glass-dark-text-2)}.facts.glass-dark div{color:var(--glass-dark-text)}
+/* text colours restored inside light glass that sits on a dark band */
+.feature-dark .glass-light,.feature-dark .glass-light span,.feature-dark .glass-light p,.feature-dark .glass-light li{color:var(--glass-light-text)}
+.feature-dark .glass-light h2,.feature-dark .glass-light h3,.feature-dark .glass-light b,.feature-dark .glass-light label,.feature-dark .glass-light a{color:var(--color-primary)}
+.feature-dark .glass-light .note,.feature-dark .glass-light .eyebrow{color:var(--glass-light-text-2)}
+.feature-dark .glass-light :focus-visible{outline-color:var(--color-primary)}
+.glass-dark :focus-visible,.hero-card :focus-visible{outline-color:var(--color-accent)}
+
+.wrap{max-width:1040px}
+.banner{padding:14px 18px;margin:0 0 8px}
+.todo{display:inline;background:var(--color-accent-soft);border:1px dashed var(--color-primary);border-radius:6px;padding:1px 8px;color:var(--color-primary);font-weight:600;font-size:.92em}
+.stats{display:grid;gap:14px;margin:8px 0 6px}@media(min-width:760px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{background:var(--color-primary);color:var(--color-text-on-dark-secondary);border-radius:var(--radius-card);padding:22px}
+.stat b{display:block;font:800 2.6rem/1 var(--font-sans);color:var(--color-accent);margin-bottom:8px}
+.cs-sec{padding:40px 0;border-top:1px solid var(--color-border)}.cs-sec:first-of-type{border-top:0}
+.cs-sec h2{margin-top:0}
+.cols{display:grid;gap:18px}@media(min-width:760px){.cols.two{grid-template-columns:1fr 1fr}.cols.three{grid-template-columns:repeat(3,1fr)}}
+.phases{list-style:none;padding:0;margin:16px 0 0;counter-reset:ph}
+.phases li{counter-increment:ph;display:grid;grid-template-columns:42px 1fr;gap:10px;padding:16px 0;border-top:1px solid var(--color-border)}
+.phases li::before{content:counter(ph);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--color-accent);color:var(--color-primary);font:800 .95rem var(--font-sans);box-shadow:inset 0 0 0 1px var(--color-primary)}
+.phases b{display:block;color:var(--color-primary)}
+.shots{columns:1;column-gap:14px}@media(min-width:620px){.shots{columns:2}}@media(min-width:900px){.shots{columns:3}}
+.shot{margin:0 0 14px;break-inside:avoid}.shot img{display:block;width:100%;height:auto;border:1px solid var(--color-border);border-radius:12px;background:var(--color-background-tertiary)}.shot figcaption{font-size:.9rem;color:var(--color-text-secondary);margin-top:8px}
+table.ev{width:100%;border-collapse:collapse;font-size:.98rem}table.ev th,table.ev td{padding:10px 12px;border-bottom:1px solid var(--color-border);text-align:left}table.ev th{color:var(--color-primary);font-weight:700}
+@media(max-width:620px){table.ev{font-size:.9rem}table.ev th,table.ev td{padding:8px 6px}}
+@media print{.site-header,.site-footer{display:none}}
+</style>
+<link rel="canonical" href="https://oti-droid.github.io/case-study/"><meta property="og:url" content="https://oti-droid.github.io/case-study/"><meta property="og:type" content="website"><meta name="theme-color" content="#152E40"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+<script>document.documentElement.classList.add("js")</script><header class="site-header"><div class="hd-in"><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>DiMe</a><button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav">Menu</button><nav id="site-nav" aria-label="Primary"><ul><li><a href="/#difference">Learn AI</a></li><li><a href="/professions/">Professions</a></li><li><a href="/guide/">Guide</a></li><li><a href="/course/">Course</a></li><li><a href="/resources/">Resources</a></li><li><a href="/about/">About</a></li></ul><a class="btn" href="/#assessment" data-track="cta_assessment_nav">Take the AI Assessment</a></nav></div></header>
+<main>
+<section class="hero-dark"><div class="wrap">
+<p class="eyebrow">Case study &middot; Prototype</p>
+<h1>A professional AI education site, built with the bare minimum</h1>
+<p class="lead">How a one-person project on a free Claude plan (Claude Sonnet 5.5 Medium) became a fast, accessible, 23-page website. Deployed from a phone, directed by me, and measured instead of assumed.</p>
+<div class="row"><a class="btn" href="/">Visit the live site</a><a class="btn ghost" href="#evidence">See the evidence</a></div>
+</div></section>
+<div class="wrap page-body">
+
+
+<section class="cs-sec">
+<h2>At a glance</h2>
+<div class="stats">
+<div class="stat"><b>23</b>pages built, plus a 404 and a legal page</div>
+<div class="stat"><b>100</b>PageSpeed accessibility score, mobile and desktop</div>
+<div class="stat"><b>92 / 99</b>PageSpeed performance, mobile / desktop</div>
+<div class="stat"><b>0</b>contrast failures across 57 tested scenarios (lowest ratio 5.05:1)</div>
+</div>
+<p class="note">Scores are from PageSpeed Insights on the live site, 21 October 2026. The page tested was the homepage.</p>
+</section>
+
+<section class="cs-sec">
+<h2>The brief</h2>
+<p>DiMe is an AI education platform for experienced professionals. The brief I wrote asked for a sophisticated, trustworthy site with an AI assessment, profession pages, a book, a course and an email funnel, and it ruled out hype, jargon and patronising language.</p>
+<p>The twist is the purpose. This is a portfolio project meant to show what is possible with the absolute bare minimum, using a free Claude plan (Claude Sonnet 5.5 Medium). It took 23 days. The free plan's token limits ran out quickly, which slowed delivery.</p>
+<p><b>Who this case study is for:</b> It is proof that a person can direct AI to produce a viable minimum viable product (MVP). Anyone who wants to collaborate on a project can reach out to me, and people looking to deliver similar projects can hire me.</p>
+</section>
+
+<section class="cs-sec">
+<h2>My role, and Claude's</h2>
+<p>I wrote the brief, set the direction and made the calls. Claude, Anthropic's AI model, did the drafting, coding and testing. I'm showing the split because it is part of the proof: what one person can direct, and what an AI can build under that direction.</p>
+<div class="cols two">
+<div class="card" style="padding:22px"><h3>What I decided</h3>
+<ul>
+<li>That this would be a proof of work, built on the bare minimum</li>
+<li>The creator story, in my own words: no technology background, a practitioner who tests rather than an authority</li>
+<li>To defer the organisations page until there is a real case study</li>
+<li>The Course: a 10-day cohort with templates, no certificate, one-time price of USD 19.99 (Ksh 2,600)</li>
+<li>To remove the placeholder cards from the trust section</li>
+<li>Two redesigns: a Deep Teal and Electric Lime brand system, then a restrained glass layer, with the glass tokens approved before any code was written</li>
+<li>GitHub Pages as the host, which I deployed myself from a phone</li>
+</ul></div>
+<div class="card" style="padding:22px"><h3>What Claude did</h3>
+<ul>
+<li>Challenged weak points in the brief and proposed fixes</li>
+<li>Wrote and built the pages, the assessment, the profession template, the Guide, the Course workbook and the book reader</li>
+<li>Checked the Guide's claims against sources and corrected what the sources did not support</li>
+<li>Ran contrast and layout tests in a browser and fixed what failed</li>
+<li>Said plainly what was unfinished or unverified</li>
+</ul></div>
+</div>
+</section>
+
+<section class="cs-sec">
+<h2>Where Claude pushed back</h2>
+<p>The brief asked to be challenged. Four of the challenges changed the site:</p>
+<ul>
+<li><b>An anonymous brand does not earn trust.</b> Experienced professionals want to see who is behind a site. The result is a named creator with an honest bio, instead of invented credentials.</li>
+<li><b>"Guide" meant two things.</b> It named both the book and the free lead magnet. The free resource became the Playbook.</li>
+<li><b>The first headline opened on pressure.</b> "AI is changing work" became a calmer line that keeps the same meaning.</li>
+<li><b>A self-reported assessment is a starting point, not a score.</b> The page says so, and the result appears before any email is asked for.</li>
+</ul>
+</section>
+
+<section class="cs-sec">
+<h2>How it was built</h2>
+<ol class="phases">
+<li><div><b>Strategy and a first version</b>A brand strategy, sitemap and a homepage with a working six-question assessment and a profession selector.</div></li>
+<li><div><b>Content and structure</b>Fourteen profession pages generated from one template, Guide and Course pages, a resources hub with a 13-term glossary, a 25-idea Playbook, and draft legal pages with consent checkboxes.</div></li>
+<li><div><b>The Guide</b>Nine chapters of about 3,900 words, checked against sources. An online reader with contents, page numbers and bookmarks, and a 27-page PDF.</div></li>
+<li><div><b>The Course workbook</b>A 10-day cohort design with 28 templates and a daily assignment.</div></li>
+<li><div><b>Deployment from a phone</b>The mobile site does not offer a folder upload, so the site ships as a zip file that a GitHub Actions workflow unpacks.</div></li>
+<li><div><b>Measure and fix</b>PageSpeed showed accessibility at 96 because of low-contrast labels. After the colours changed it reads 100.</div></li>
+<li><div><b>Redesign one</b>Deep Teal #152E40 and Electric Lime #CEFF52, the Inter typeface, design tokens, and WCAG AA contrast.</div></li>
+<li><div><b>Redesign two</b>Glass effects limited to floating components (the header, menu, hero card, Method panel, assessment panel, Course details card and the reader's bars and sheet). Long text, form fields and buttons stay solid.</div></li>
+</ol>
+</section>
+
+<section class="cs-sec" id="evidence">
+<h2>The evidence</h2>
+<table class="ev">
+<thead><tr><th>Measure</th><th>Result</th><th>How it was measured</th></tr></thead>
+<tbody>
+<tr><td>PageSpeed, mobile</td><td>Performance 92, Accessibility 100, Best Practices 100, SEO 100</td><td>PageSpeed Insights, live site</td></tr>
+<tr><td>PageSpeed, desktop</td><td>Performance 99, Accessibility 100, Best Practices 100, SEO 100</td><td>PageSpeed Insights, live site</td></tr>
+<tr><td>Text contrast</td><td>0 failures in 57 scenarios, 4,362 text runs, lowest ratio 5.05:1</td><td>Text hidden, real screenshot taken, worst pixel behind every line measured</td></tr>
+<tr><td>Solid fallback</td><td>The same checks pass with transparency switched off</td><td>Glass tokens overridden to solid colours</td></tr>
+<tr><td>Blur cost</td><td>At most 2 blurred layers on screen, 3 with the mobile menu open</td><td>Counted while scrolling each page</td></tr>
+<tr><td>Guide accuracy</td><td>Claims checked against published research and reports</td><td>Sources include Liu et al. (2024), Sharma et al. (2023), an ILO working paper and a US Copyright Office report</td></tr>
+</tbody></table>
+<p class="note" style="margin-top:12px">Claude also scored the first version 5.5 out of 10 as a launch-ready site and 7.5 out of 10 as a portfolio piece. Those were an AI's subjective judgements, not measurements.</p>
+<h3 style="margin-top:26px">Screenshots</h3>
+<div class="shots">
+<figure class="shot"><a href="/images/case-study/homepage-live.jpg" target="_blank" rel="noopener"><img src="/images/case-study/homepage-live.jpg" width="1000" height="695" alt="The live DiMe homepage in landscape: a dark teal hero with a lime headline, the five-step DiMe Method card and two buttons." loading="lazy" decoding="async"></a><figcaption>The live homepage.</figcaption></figure>
+<figure class="shot"><a href="/images/case-study/assessment-result.jpg" target="_blank" rel="noopener"><img src="/images/case-study/assessment-result.jpg" width="687" height="2576" alt="The assessment result screen on a phone: an AI Stage of Starter, with a strength, a gap to close, a next step and a consent box for emailing the profile." loading="lazy" decoding="async"></a><figcaption>The assessment result: a stage, a strength, a gap and a next step.</figcaption></figure>
+<figure class="shot"><a href="/images/case-study/book-reader-bookmark.jpg" target="_blank" rel="noopener"><img src="/images/case-study/book-reader-bookmark.jpg" width="760" height="1379" alt="The book reader on a phone, showing Chapter 1 on page 3 of 21, with the Bookmarks counter at 1 and Previous and Next buttons." loading="lazy" decoding="async"></a><figcaption>The book reader with a bookmark saved.</figcaption></figure>
+<figure class="shot"><a href="/images/case-study/pagespeed-mobile.jpg" target="_blank" rel="noopener"><img src="/images/case-study/pagespeed-mobile.jpg" width="760" height="1710" alt="PageSpeed Insights mobile report for oti-droid.github.io: Performance 92, Accessibility 100, Best Practices 100, SEO 100." loading="lazy" decoding="async"></a><figcaption>PageSpeed, mobile, 24 October 2026.</figcaption></figure>
+<figure class="shot"><a href="/images/case-study/pagespeed-desktop.jpg" target="_blank" rel="noopener"><img src="/images/case-study/pagespeed-desktop.jpg" width="760" height="1734" alt="PageSpeed Insights desktop report for oti-droid.github.io: Performance 99, Accessibility 100, Best Practices 100, SEO 100." loading="lazy" decoding="async"></a><figcaption>PageSpeed, desktop, 24 October 2026.</figcaption></figure>
+<figure class="shot"><a href="/images/case-study/before-after.jpg" target="_blank" rel="noopener"><img src="/images/case-study/before-after.jpg" width="900" height="1600" alt="Two homepage hero screens stacked. Top: the first design, cream serif headline on near-black with teal accents. Bottom: the present design, white and lime headline on deep teal with a glass Method card." loading="lazy" decoding="async"></a><figcaption>Before and after: the first design (top) and the present design (bottom).</figcaption></figure>
+</div>
+<p class="note">Tap an image to open it full size.</p>
+</section>
+
+<section class="cs-sec">
+<h2>What went wrong, and the fix</h2>
+<ul>
+<li><b>A placeholder email address</b> was left in the homepage source because an earlier fix was applied to a built copy that a later rebuild overwrote. A later check found it. It now uses the real contact address.</li>
+<li><b>A lime glow behind the hero</b> pushed intro text on mobile to 4.12:1, below the 4.5 minimum. A pixel-level audit caught it, and the glow was resized. The lowest ratio is now 5.05:1.</li>
+<li><b>The first contrast audit could not see gradients.</b> It was rebuilt to measure real rendered pixels instead of CSS colours.</li>
+<li><b>A miscount.</b> A summary said the Course had about 35 templates. A recount found 28, and the page says 28.</li>
+<li><b>The live site showed a GitHub 404.</b> It happened because the repository had been changed from public to private. Setting it back to public restored the site.</li>
+</ul>
+</section>
+
+<section class="cs-sec">
+<h2>What is real, and what is a demo</h2>
+<div class="cols two">
+<div class="card" style="padding:22px"><h3>Real and working</h3>
+<ul><li>All pages, the assessment logic and the profession selector</li><li>The Guide, its online reader with bookmarks, and the PDF download</li><li>The measured accessibility and speed results</li></ul></div>
+<div class="card" style="padding:22px"><h3>Still a demo</h3>
+<ul><li>The forms store nothing yet, because no email service is connected</li><li>There is no payment system, so the Course is a waitlist</li><li>The legal pages are drafts that a lawyer has not reviewed</li><li>The regulated-profession pages have not been reviewed by practitioners</li><li>There are no testimonials, because there are no customers yet</li></ul></div>
+</div>
+</section>
+
+<section class="cs-sec">
+<h2>Tools</h2>
+<p>Claude (Anthropic), using Claude Sonnet 5.5 Medium on a free plan. HTML, CSS and plain JavaScript, with no framework or dependencies. A small Node build script. GitHub Pages and GitHub Actions for hosting. The Inter typeface. PageSpeed Insights and a headless browser for testing.</p>
+</section>
+
+<section class="cs-sec">
+<h2>What I would do next</h2>
+<ul>
+<li>Connect an email service, so the forms collect sign-ups</li>
+<li>Add payment for the Course</li>
+<li>Get a lawyer to review the legal pages, and practising professionals to review the regulated pages</li>
+<li>Collect testimonials from the first cohort, who will be offered a 30% discount on the course</li>
+</ul>
+</section>
+
+<section class="cs-sec">
+<h2>Work with me</h2>
+<p>If you are exploring an idea, solving a difficult information problem, or looking for a practical way to apply AI, I would welcome the conversation. That includes professionals who want clarity on how to use AI to improve their output at work, and organisations that want to become AI literate and use AI successfully in their day-to-day work.</p>
+<div class="row"><a class="btn" href="mailto:otikoduongo@gmail.com">Get in touch</a><a class="btn ghost" href="/guide/">See the Guide</a><a class="btn ghost" href="/guide/read/">Read the book</a></div>
+</section>
+</div></main>
+<footer class="site-footer"><div class="ft-in"><div><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>DiMe</a><p>Your experience. Augmented by AI.</p><a class="btn" href="/#assessment">Take the AI Assessment</a></div><nav aria-label="Learn"><p class="ft-h">Learn</p><ul><li><a href="/guide/">The Guide</a></li><li><a href="/course/">The Course</a></li><li><a href="/resources/">Resources</a></li><li><a href="/playbook/">The Playbook</a></li></ul></nav><nav aria-label="DiMe"><p class="ft-h">DiMe</p><ul><li><a href="/about/">About</a></li><li><a href="/professions/">Professions</a></li><li><a href="/case-study/">Case study</a></li><li><a href="mailto:otikoduongo@gmail.com">Contact</a></li></ul></nav><nav aria-label="Legal"><p class="ft-h">Legal</p><ul><li><a href="/legal/#privacy">Privacy</a></li><li><a href="/legal/#terms">Terms</a></li></ul></nav></div><p class="ft-note">AI assists. Professionals remain accountable.</p></footer>
+<script>(function(){var b=document.querySelector(".menu-btn"),n=document.getElementById("site-nav");if(!b||!n)return;b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o?"true":"false");b.textContent=o?"Close":"Menu"});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");b.setAttribute("aria-expanded","false");b.textContent="Menu";b.focus()}})})();</script>
+</body>
+</html>

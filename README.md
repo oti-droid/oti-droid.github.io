@@ -1,6 +1,6 @@
 # DiMe (prototype)
 
-Static, dependency-free website. 22 indexable pages, no build step needed to host.
+Static, dependency-free website. 23 indexable pages, no build step needed to host.
 
 ## Deploy (pick one, free tiers)
 - **Cloudflare Pages / Netlify:** create a project, upload this folder (or connect the repo). No build command; publish directory is the repo root. Use a root domain or the provided subdomain.
